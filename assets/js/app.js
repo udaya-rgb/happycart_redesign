@@ -728,6 +728,7 @@ function renderSearchScopeMenu() {
 function openSearchScopeMenu(focusFirst = false) {
   renderSearchScopeMenu();
   searchScope.classList.add('open');
+  searchScopeMenu.classList.add('open');
   searchScopeBtn.setAttribute('aria-expanded', 'true');
   document.getElementById('accountPopover').classList.remove('open');
   document.getElementById('megaMenu').classList.remove('open');
@@ -740,6 +741,7 @@ function openSearchScopeMenu(focusFirst = false) {
 
 function closeSearchScopeMenu() {
   searchScope.classList.remove('open');
+  searchScopeMenu.classList.remove('open');
   searchScopeBtn.setAttribute('aria-expanded', 'false');
 }
 
