@@ -264,13 +264,25 @@ function renderAllMarketplaceSections() {
     .map(p => buildProductCardHTML(p)).join('');
 
   // Featured Brands
-  document.getElementById('brandsGrid').innerHTML = FEATURED_BRANDS.map(b => `
-    <div class="brand-tile" onclick="showToast('Opening ${b.name} Official Brand Store — ${b.offer}')">
-      <div class="brand-monogram">${b.logo ? `<img src="${b.logo}" alt="${b.name} logo" loading="lazy" />` : b.mono}</div>
-      <div class="brand-tile-title">${b.name}</div>
-      <div class="brand-tile-offer">${b.offer}</div>
-    </div>
-  `).join('');
+  const brandsGrid = document.getElementById('brandsGrid');
+  if (brandsGrid && !brandsGrid.dataset.marqueeReady) {
+    brandsGrid.dataset.marqueeReady = 'true';
+    const brandCard = b => `
+      <div class="brand-tile" onclick="showToast('Opening ${b.name} Official Brand Store — ${b.offer}')">
+        <div class="brand-monogram">${b.logo ? `<img src="${b.logo}" alt="${b.name} logo" loading="lazy" />` : b.mono}</div>
+        <div class="brand-tile-title">${b.name}</div>
+        <div class="brand-tile-offer">${b.offer}</div>
+      </div>
+    `;
+    const cards = FEATURED_BRANDS.map(brandCard).join('');
+    const clonedCards = FEATURED_BRANDS.map(brandCard).join('');
+    brandsGrid.innerHTML = `
+      <div class="brand-track">
+        <div class="brand-set">${cards}</div>
+        <div class="brand-set" aria-hidden="true">${clonedCards}</div>
+      </div>
+    `;
+  }
 
   // Sports & Healthcare
   document.getElementById('sportsCollectionGrid').innerHTML = SPORTS_COLLECTIONS.map(c => `

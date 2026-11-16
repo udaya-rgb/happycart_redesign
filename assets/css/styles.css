@@ -1997,9 +1997,54 @@ a {
 
 /* Featured Brands Strip */
 .brands-grid {
-  display: grid;
-  grid-template-columns: repeat(8, 1fr);
+  position: relative;
+  overflow: hidden;
+  padding: 4px 0 10px;
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 4%, #000 96%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0, #000 4%, #000 96%, transparent 100%);
+}
+
+.brand-track {
+  display: flex;
+  width: max-content;
+  animation: brandRoll 30s linear infinite;
+  will-change: transform;
+}
+
+.brand-set {
+  display: flex;
   gap: 14px;
+  padding-right: 14px;
+}
+
+.brand-set .brand-tile {
+  flex: 0 0 132px;
+  width: 132px;
+}
+
+.brands-grid:hover .brand-track,
+.brands-grid:focus-within .brand-track {
+  animation-play-state: paused;
+}
+
+@keyframes brandRoll {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .brand-track {
+    animation: none;
+    transform: none;
+  }
+  .brands-grid {
+    overflow-x: auto;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+  .brand-set[aria-hidden="true"] {
+    display: none;
+  }
 }
 
 .brand-tile {
@@ -2801,9 +2846,6 @@ a {
   .products-grid, .collection-grid, .history-strip {
     grid-template-columns: repeat(3, 1fr);
   }
-  .brands-grid {
-    grid-template-columns: repeat(4, 1fr);
-  }
   .quad-grid, .coupons-grid, .trust-bar {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -2845,7 +2887,7 @@ a {
 }
 
 @media (max-width: 640px) {
-  .products-grid, .collection-grid, .history-strip, .brands-grid, .quad-grid, .coupons-grid, .trust-bar {
+  .products-grid, .collection-grid, .history-strip, .quad-grid, .coupons-grid, .trust-bar {
     grid-template-columns: repeat(2, 1fr);
     gap: 12px;
   }
@@ -2868,6 +2910,13 @@ a {
   .category-set .cat-card {
     flex-basis: 92px;
     width: 92px;
+  }
+  .brand-track {
+    animation-duration: 22s;
+  }
+  .brand-set .brand-tile {
+    flex-basis: 124px;
+    width: 124px;
   }
   .footer-grid {
     grid-template-columns: 1fr;
