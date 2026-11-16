@@ -442,7 +442,7 @@
   }
 
   /* ------------------------------------------------------------------------
-     CATEGORY STRIP — scrollable snap carousel, no marquee
+     CATEGORY STRIP — continuous app marquee (tap/hold to pause)
      ------------------------------------------------------------------------ */
   .category-strip-section {
     padding: 14px 0 6px;
@@ -450,10 +450,9 @@
 
   .category-grid {
     overflow-x: auto;
-    -webkit-mask-image: none;
-    mask-image: none;
-    scroll-snap-type: x proximity;
+    overflow-y: hidden;
     padding: 4px 0 10px;
+    scroll-behavior: auto;
   }
 
   .category-track {
@@ -462,13 +461,9 @@
     transform: none;
   }
 
-  .category-set[aria-hidden="true"] {
-    display: none;
-  }
-
   .category-set {
     gap: 10px;
-    padding-right: 0;
+    padding-right: 10px;
   }
 
   .category-set .cat-card {
@@ -476,7 +471,6 @@
     width: 82px;
     padding: 6px 3px;
     gap: 7px;
-    scroll-snap-align: start;
   }
 
   .cat-icon-tile {
@@ -815,7 +809,7 @@
   }
 
   /* ------------------------------------------------------------------------
-     TRENDING / COLLECTIONS / BRANDS / HISTORY — horizontal app rows
+     TRENDING / COLLECTIONS / BRANDS / HISTORY — app rows + brand marquee
      ------------------------------------------------------------------------ */
   .trending-section {
     padding: 0 0 24px;
@@ -872,9 +866,8 @@
 
   .brands-grid {
     overflow-x: auto;
-    -webkit-mask-image: none;
-    mask-image: none;
-    scroll-snap-type: x proximity;
+    overflow-y: hidden;
+    scroll-behavior: auto;
   }
 
   .brand-track {
@@ -883,19 +876,14 @@
     transform: none;
   }
 
-  .brand-set[aria-hidden="true"] {
-    display: none;
-  }
-
   .brand-set {
     gap: 10px;
-    padding-right: 0;
+    padding-right: 10px;
   }
 
   .brand-set .brand-tile {
     flex: 0 0 118px;
     width: 118px;
-    scroll-snap-align: start;
   }
 
   .brand-tile {
@@ -1423,11 +1411,31 @@
   .collection-card:hover .collection-art {
     transform: none;
   }
+
 }
 
 /* --------------------------------------------------------------------------
    SMALL PHONES — extra tightening
    -------------------------------------------------------------------------- */
+@media (max-width: 768px) and (prefers-reduced-motion: reduce) {
+  .category-grid,
+  .brands-grid {
+    overflow-x: auto;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+
+  .category-track,
+  .brand-track {
+    animation: none;
+  }
+
+  .category-set[aria-hidden="true"],
+  .brand-set[aria-hidden="true"] {
+    display: none;
+  }
+}
+
 @media (max-width: 390px) {
   .container {
     padding-left: 12px;

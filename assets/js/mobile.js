@@ -5,6 +5,7 @@
 (function () {
   const MOBILE_QUERY = '(max-width: 768px)';
   const mobileMedia = window.matchMedia(MOBILE_QUERY);
+  const reducedMotionMedia = window.matchMedia('(prefers-reduced-motion: reduce)');
 
   const tabbar = document.getElementById('mobileTabbar');
   const backdrop = document.getElementById('globalBackdrop');
@@ -171,6 +172,202 @@
   }
 
   // -----------------------------------------------------------------------
+  // Marquee strips: auto-scroll while idle, follow the finger while dragged
+  // -----------------------------------------------------------------------
+  const MARQUEE_RESUME_DELAY = 1200;
+  const marqueeControllers = [];
+
+  function canAutoScrollMarquee() {
+    return isMobile() && !reducedMotionMedia.matches;
+  }
+
+  function initAutoMarquee(gridSelector, durationMs) {
+    const grid = document.querySelector(gridSelector);
+    if (!grid) return;
+
+    const track = grid.querySelector('.category-track, .brand-track');
+    const firstSet = track ? track.querySelector('.category-set, .brand-set') : null;
+    if (!track || !firstSet) return;
+
+    const controller = {
+      grid: grid,
+      firstSet: firstSet,
+      setWidth: 0,
+      perMs: 0,
+      pos: 0,
+      pausedUntil: 0,
+      touching: false,
+      syncPending: true,
+      lastTs: 0,
+      resumeTimer: null,
+      raf: null,
+      durationMs: durationMs
+    };
+    marqueeControllers.push(controller);
+
+    function measure() {
+      const width = firstSet.getBoundingClientRect().width;
+      if (width > 0) {
+        controller.setWidth = width;
+        controller.perMs = width / controller.durationMs;
+      }
+    }
+
+    function resetPosition() {
+      if (!canAutoScrollMarquee() || controller.touching || controller.setWidth <= 0) return;
+      // The second copied set is identical, so starting one set in is seamless.
+      controller.pos = controller.setWidth;
+      controller.syncPending = false;
+      controller.lastTs = 0;
+      grid.scrollLeft = controller.pos;
+    }
+
+    function start() {
+      if (!canAutoScrollMarquee() || controller.raf) return;
+      controller.lastTs = 0;
+      controller.raf = window.requestAnimationFrame(step);
+    }
+
+    function stop(resetScroll) {
+      if (controller.raf) {
+        window.cancelAnimationFrame(controller.raf);
+        controller.raf = null;
+      }
+      controller.lastTs = 0;
+      if (resetScroll) {
+        controller.pos = 0;
+        grid.scrollLeft = 0;
+      }
+    }
+
+    function step(ts) {
+      controller.raf = null;
+
+      if (!canAutoScrollMarquee()) {
+        stop(true);
+        return;
+      }
+
+      if (!controller.lastTs) controller.lastTs = ts;
+      const dt = Math.min(64, ts - controller.lastTs);
+      controller.lastTs = ts;
+
+      const running = !controller.touching && Date.now() >= controller.pausedUntil;
+
+      if (running && controller.setWidth > 0) {
+        if (controller.syncPending) {
+          controller.pos = grid.scrollLeft;
+          controller.syncPending = false;
+        }
+
+        controller.pos -= controller.perMs * dt;
+        while (controller.pos <= 0) controller.pos += controller.setWidth;
+        while (controller.pos >= controller.setWidth * 2) controller.pos -= controller.setWidth;
+        grid.scrollLeft = controller.pos;
+      }
+
+      controller.raf = window.requestAnimationFrame(step);
+    }
+
+    function pause() {
+      if (!isMobile()) return;
+      controller.touching = true;
+      controller.pos = grid.scrollLeft;
+      controller.syncPending = false;
+      controller.lastTs = 0;
+      window.clearTimeout(controller.resumeTimer);
+    }
+
+    function resume() {
+      if (!isMobile()) return;
+      controller.touching = false;
+      controller.lastTs = 0;
+      controller.pausedUntil = Date.now() + MARQUEE_RESUME_DELAY;
+      window.clearTimeout(controller.resumeTimer);
+      controller.resumeTimer = window.setTimeout(function () {
+        controller.syncPending = true;
+        controller.pausedUntil = 0;
+        start();
+      }, MARQUEE_RESUME_DELAY);
+      start();
+    }
+
+    function isTouchPointer(event) {
+      return event.pointerType && event.pointerType !== 'mouse';
+    }
+
+    grid.addEventListener('touchstart', pause, { passive: true });
+    grid.addEventListener('touchend', resume, { passive: true });
+    grid.addEventListener('touchcancel', resume, { passive: true });
+
+    grid.addEventListener('pointerdown', function (event) {
+      if (isTouchPointer(event)) pause();
+    }, { passive: true });
+
+    grid.addEventListener('pointerup', function (event) {
+      if (isTouchPointer(event)) resume();
+    }, { passive: true });
+
+    grid.addEventListener('pointercancel', function (event) {
+      if (isTouchPointer(event)) resume();
+    }, { passive: true });
+
+    controller.measure = measure;
+    controller.resetPosition = resetPosition;
+    controller.start = start;
+    controller.stop = stop;
+
+    measure();
+    resetPosition();
+    start();
+  }
+
+  function refreshMarquees() {
+    marqueeControllers.forEach(function (controller) {
+      controller.measure();
+      if (canAutoScrollMarquee()) {
+        if (!controller.touching) controller.resetPosition();
+        controller.start();
+      } else {
+        controller.stop(true);
+      }
+    });
+  }
+
+  if (mobileMedia.addEventListener) {
+    mobileMedia.addEventListener('change', refreshMarquees);
+  } else if (mobileMedia.addListener) {
+    mobileMedia.addListener(refreshMarquees);
+  }
+
+  if (reducedMotionMedia.addEventListener) {
+    reducedMotionMedia.addEventListener('change', refreshMarquees);
+  } else if (reducedMotionMedia.addListener) {
+    reducedMotionMedia.addListener(refreshMarquees);
+  }
+
+  let marqueeResizeTimer = null;
+  window.addEventListener('resize', function () {
+    window.clearTimeout(marqueeResizeTimer);
+    marqueeResizeTimer = window.setTimeout(function () {
+      marqueeControllers.forEach(function (controller) {
+        controller.measure();
+      });
+    }, 200);
+  }, { passive: true });
+
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(function () {
+      if (!canAutoScrollMarquee()) return;
+      marqueeControllers.forEach(function (controller) {
+        controller.measure();
+        if (!controller.touching) controller.resetPosition();
+        controller.start();
+      });
+    });
+  }
+
+  // -----------------------------------------------------------------------
   // Initialise
   // -----------------------------------------------------------------------
   function initMobile() {
@@ -178,10 +375,13 @@
     setActiveTab('home');
     syncScrollLock();
     updateActiveFromScroll();
+    initAutoMarquee('.category-grid', 26000);
+    initAutoMarquee('.brands-grid', 24000);
   }
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initMobile);
+    // window listeners run after app.js has rendered the category/brand strips
+    window.addEventListener('DOMContentLoaded', initMobile);
   } else {
     initMobile();
   }
