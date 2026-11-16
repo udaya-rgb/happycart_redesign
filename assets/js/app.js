@@ -256,7 +256,7 @@ function renderAllMarketplaceSections() {
   // Featured Brands
   document.getElementById('brandsGrid').innerHTML = FEATURED_BRANDS.map(b => `
     <div class="brand-tile" onclick="showToast('Opening ${b.name} Official Brand Store — ${b.offer}')">
-      <div class="brand-monogram">${b.mono}</div>
+      <div class="brand-monogram">${b.logo ? `<img src="${b.logo}" alt="${b.name} logo" loading="lazy" />` : b.mono}</div>
       <div class="brand-tile-title">${b.name}</div>
       <div class="brand-tile-offer">${b.offer}</div>
     </div>

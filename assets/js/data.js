@@ -275,14 +275,14 @@ const SPORTS_COLLECTIONS = [
 ];
 
 const FEATURED_BRANDS = [
-  { name: 'Apple', mono: '', offer: 'Up to ₹10,000 Off' },
-  { name: 'Sony', mono: 'SN', offer: 'Up to 35% Off' },
-  { name: 'Samsung', mono: 'SM', offer: 'Up to 40% Off' },
-  { name: 'Puma', mono: 'PM', offer: 'Min. 50% Off' },
-  { name: 'JBL', mono: 'JBL', offer: 'Up to 45% Off' },
-  { name: 'Bosch', mono: 'BS', offer: 'Up to 30% Off' },
-  { name: 'Havells', mono: 'HV', offer: 'Up to 40% Off' },
-  { name: 'Logitech', mono: 'LG', offer: 'Up to 35% Off' }
+  { name: 'Apple', mono: '', logo: 'assets/images/brands/apple.svg', offer: 'Up to ₹10,000 Off' },
+  { name: 'Sony', mono: 'SN', logo: 'assets/images/brands/sony.png', offer: 'Up to 35% Off' },
+  { name: 'Samsung', mono: 'SM', logo: 'assets/images/brands/samsung.png', offer: 'Up to 40% Off' },
+  { name: 'Puma', mono: 'PM', logo: 'assets/images/brands/puma.svg', offer: 'Min. 50% Off' },
+  { name: 'JBL', mono: 'JBL', logo: 'assets/images/brands/jbl.svg', offer: 'Up to 45% Off' },
+  { name: 'Bosch', mono: 'BS', logo: 'assets/images/brands/bosch.svg', offer: 'Up to 30% Off' },
+  { name: 'Havells', mono: 'HV', logo: 'assets/images/brands/havells.svg', offer: 'Up to 40% Off' },
+  { name: 'Logitech', mono: 'LG', logo: 'assets/images/brands/logitech.png', offer: 'Up to 35% Off' }
 ];
 
 const DISCOVERY_QUADS = [

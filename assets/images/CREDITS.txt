@@ -29,3 +29,11 @@ promo-gaming  |  Unsplash  |  https://unsplash.com/photos/1593305841991-05c297ba
 bento-electronics  |  Unsplash  |  https://unsplash.com/photos/1498049794561-7780e7231661
 bento-home  |  Unsplash  |  https://unsplash.com/photos/1556912167-f556f1f39fdf
 bento-fashion  |  Unsplash  |  https://unsplash.com/photos/1441986300917-64674bd600d8
+
+Brand logos
+===========
+Apple, Puma, JBL, Bosch and Havells logos sourced from Simple Icons (https://simpleicons.org).
+Sony logo sourced from Wikimedia Commons (File:Sony logo.svg).
+Samsung logo sourced from Wikimedia Commons (File:Samsung wordmark.svg).
+Logitech logo sourced from Wikimedia Commons (File:Logitech Logo 2012.svg).
+Brand names and logos are trademarks of their respective owners.
