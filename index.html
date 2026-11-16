@@ -88,18 +88,28 @@
         <!-- Search Bar with Category Scope & Live Autocomplete -->
         <div class="search-wrapper" id="searchWrapper">
           <div class="search-bar">
-            <select id="searchCategorySelect" class="search-scope" aria-label="Search Category">
-              <option value="all">All</option>
-              <option value="Audio & Wearables">Audio &amp; Wearables</option>
-              <option value="Computing">Computing</option>
-              <option value="Cameras">Cameras</option>
-              <option value="Gaming">Gaming</option>
-            </select>
+            <div class="search-scope" id="searchScope">
+              <button
+                type="button"
+                id="searchScopeBtn"
+                class="search-scope-btn"
+                aria-haspopup="listbox"
+                aria-expanded="false"
+                aria-controls="searchScopeMenu"
+                aria-label="Search in category"
+              >
+                <span id="searchScopeLabel">All</span>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+              <div class="search-scope-menu" id="searchScopeMenu" role="listbox" aria-label="Choose search category"></div>
+            </div>
             <input
               type="text"
               id="searchInput"
               class="search-input"
-              placeholder="Search for products, brands and more..."
+              placeholder="Search products, brands &amp; more..."
               autocomplete="off"
             />
             <button type="button" id="searchClearBtn" class="search-clear" aria-label="Clear search">✕</button>

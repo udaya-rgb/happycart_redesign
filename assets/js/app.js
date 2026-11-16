@@ -153,9 +153,12 @@ function renderProducts() {
   if (state.searchQuery.trim()) {
     const q = state.searchQuery.toLowerCase();
     list = ALL_CATALOG.filter(p =>
-      p.title.toLowerCase().includes(q) ||
-      p.subtitle.toLowerCase().includes(q) ||
-      p.category.toLowerCase().includes(q)
+      (activeSearchScope === 'all' || p.category === activeSearchScope) &&
+      (
+        p.title.toLowerCase().includes(q) ||
+        p.subtitle.toLowerCase().includes(q) ||
+        p.category.toLowerCase().includes(q)
+      )
     );
   }
 
@@ -444,6 +447,7 @@ function resetFilters() {
   document.getElementById('searchInput').value = '';
   document.getElementById('searchClearBtn').classList.remove('visible');
   document.querySelectorAll('.cat-card').forEach(c => c.classList.remove('active'));
+  setSearchScope('all');
   setDealFilter('all');
 }
 
@@ -669,6 +673,158 @@ function handleCheckout() {
 const searchInput = document.getElementById('searchInput');
 const searchDropdown = document.getElementById('searchDropdown');
 const searchClearBtn = document.getElementById('searchClearBtn');
+const searchScope = document.getElementById('searchScope');
+const searchScopeBtn = document.getElementById('searchScopeBtn');
+const searchScopeLabel = document.getElementById('searchScopeLabel');
+const searchScopeMenu = document.getElementById('searchScopeMenu');
+
+const SEARCH_SCOPES = [
+  { value: 'all', label: 'All Categories', short: 'All', icon: '🛍️' },
+  { value: 'Audio & Wearables', label: 'Audio & Wearables', short: 'Audio', icon: '🎧' },
+  { value: 'Computing', label: 'Computing', short: 'Computing', icon: '💻' },
+  { value: 'Cameras', label: 'Cameras', short: 'Cameras', icon: '📷' },
+  { value: 'Gaming', label: 'Gaming', short: 'Gaming', icon: '🎮' },
+  { value: 'Power & Tech', label: 'Power & Tech', short: 'Power', icon: '⚡' },
+  { value: 'Smart Home', label: 'Smart Home', short: 'Smart Home', icon: '🏠' },
+  { value: 'Home & Kitchen', label: 'Home & Kitchen', short: 'Kitchen', icon: '🍳' },
+  { value: 'Beauty', label: 'Beauty', short: 'Beauty', icon: '✨' }
+];
+
+let activeSearchScope = 'all';
+
+function getSearchScopeConfig(value = activeSearchScope) {
+  return SEARCH_SCOPES.find(scope => scope.value === value) || SEARCH_SCOPES[0];
+}
+
+function renderSearchScopeMenu() {
+  const options = SEARCH_SCOPES.map(scope => {
+    const count = scope.value === 'all'
+      ? ALL_CATALOG.length
+      : ALL_CATALOG.filter(p => p.category === scope.value).length;
+    const isActive = scope.value === activeSearchScope;
+    return `
+      <button type="button" class="scope-option ${isActive ? 'active' : ''}" role="option" aria-selected="${isActive}" data-scope="${scope.value}" tabindex="-1">
+        <span class="scope-option-icon" aria-hidden="true">${scope.icon}</span>
+        <span class="scope-option-text">
+          <span class="scope-option-label">${scope.label}</span>
+          <span class="scope-option-meta">${count} product${count === 1 ? '' : 's'}</span>
+        </span>
+        <span class="scope-option-check" aria-hidden="true">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        </span>
+      </button>
+    `;
+  }).join('');
+
+  searchScopeMenu.innerHTML = `
+    <div class="scope-menu-head">
+      <span class="scope-menu-eyebrow">Search in</span>
+      <span class="scope-menu-sub">Pick a category to narrow your results</span>
+    </div>
+    <div class="scope-menu-grid">${options}</div>
+  `;
+}
+
+function openSearchScopeMenu(focusFirst = false) {
+  renderSearchScopeMenu();
+  searchScope.classList.add('open');
+  searchScopeBtn.setAttribute('aria-expanded', 'true');
+  document.getElementById('accountPopover').classList.remove('open');
+  document.getElementById('megaMenu').classList.remove('open');
+  searchDropdown.classList.remove('open');
+  if (focusFirst) {
+    const target = searchScopeMenu.querySelector('.scope-option.active') || searchScopeMenu.querySelector('.scope-option');
+    if (target) target.focus();
+  }
+}
+
+function closeSearchScopeMenu() {
+  searchScope.classList.remove('open');
+  searchScopeBtn.setAttribute('aria-expanded', 'false');
+}
+
+function setSearchScope(value) {
+  activeSearchScope = value;
+  const scope = getSearchScopeConfig(value);
+  searchScopeLabel.textContent = scope.short;
+  searchScopeBtn.setAttribute('aria-label', `Search in ${scope.label}`);
+  searchInput.placeholder = value === 'all'
+    ? 'Search products, brands & more...'
+    : `Search in ${scope.label}...`;
+  closeSearchScopeMenu();
+  if (searchInput.value.trim()) {
+    renderSearchDropdown(searchInput.value);
+    renderProducts();
+  }
+}
+
+function initSearchScope() {
+  if (searchScope.dataset.ready === 'true') return;
+  searchScope.dataset.ready = 'true';
+
+  renderSearchScopeMenu();
+  setSearchScope(activeSearchScope);
+
+  searchScopeBtn.addEventListener('click', (event) => {
+    event.stopPropagation();
+    if (searchScope.classList.contains('open')) {
+      closeSearchScopeMenu();
+    } else {
+      openSearchScopeMenu();
+    }
+  });
+
+  searchScopeBtn.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      closeSearchScopeMenu();
+      return;
+    }
+    if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+      event.preventDefault();
+      openSearchScopeMenu(true);
+    }
+  });
+
+  searchScopeMenu.addEventListener('click', (event) => {
+    const option = event.target.closest('.scope-option');
+    if (!option) return;
+    setSearchScope(option.dataset.scope);
+    searchInput.focus();
+  });
+
+  searchScopeMenu.addEventListener('keydown', (event) => {
+    const options = Array.from(searchScopeMenu.querySelectorAll('.scope-option'));
+    const currentIndex = options.indexOf(document.activeElement);
+
+    if (event.key === 'Escape') {
+      event.preventDefault();
+      closeSearchScopeMenu();
+      searchScopeBtn.focus();
+      return;
+    }
+    if (event.key === 'Tab') {
+      closeSearchScopeMenu();
+      return;
+    }
+    if (event.key === 'ArrowDown' || event.key === 'ArrowUp' || event.key === 'Home' || event.key === 'End') {
+      event.preventDefault();
+      let nextIndex = currentIndex;
+      if (event.key === 'ArrowDown') nextIndex = (currentIndex + 1 + options.length) % options.length;
+      if (event.key === 'ArrowUp') nextIndex = (currentIndex - 1 + options.length) % options.length;
+      if (event.key === 'Home') nextIndex = 0;
+      if (event.key === 'End') nextIndex = options.length - 1;
+      options[nextIndex].focus();
+    }
+  });
+
+  document.addEventListener('click', (event) => {
+    if (!event.target.closest('.search-scope')) closeSearchScopeMenu();
+  });
+
+  document.addEventListener('focusin', (event) => {
+    if (!event.target.closest('.search-scope')) closeSearchScopeMenu();
+  });
+}
 
 searchInput.addEventListener('input', (e) => {
   const val = e.target.value;
@@ -684,6 +840,13 @@ searchInput.addEventListener('focus', () => {
   }
 });
 
+searchInput.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape') {
+    closeSearchScopeMenu();
+    searchDropdown.classList.remove('open');
+  }
+});
+
 searchClearBtn.addEventListener('click', () => {
   searchInput.value = '';
   state.searchQuery = '';
@@ -693,6 +856,7 @@ searchClearBtn.addEventListener('click', () => {
 });
 
 document.getElementById('searchSubmitBtn').addEventListener('click', () => {
+  closeSearchScopeMenu();
   searchDropdown.classList.remove('open');
   scrollToSection('deals');
 });
@@ -704,7 +868,10 @@ function renderSearchDropdown(query) {
     return;
   }
 
-  const scope = document.getElementById('searchCategorySelect').value;
+  const scope = activeSearchScope;
+  const scopeConfig = getSearchScopeConfig(scope);
+  const scopeLabel = scope === 'all' ? 'All Categories' : scopeConfig.label;
+  const safeQuery = query.replace(/</g, '&lt;').replace(/>/g, '&gt;');
   const matches = ALL_CATALOG.filter(p => {
     const scopeOk = scope === 'all' || p.category === scope;
     const textOk = p.title.toLowerCase().includes(q) || p.subtitle.toLowerCase().includes(q);
@@ -712,18 +879,36 @@ function renderSearchDropdown(query) {
   });
 
   if (matches.length === 0) {
-    searchDropdown.innerHTML = `<div style="padding: 14px; font-size: 0.84rem; color: var(--text-muted); text-align: center;">No instant matches for "${query}"</div>`;
-  } else {
-    searchDropdown.innerHTML = matches.map(m => `
-      <div class="search-item" onclick="openQuickView('${m.id}'); searchDropdown.classList.remove('open');">
-        <div class="search-item-thumb"><img src="${m.image}" alt="" /></div>
-        <div class="search-item-info">
-          <div class="search-item-title">${m.title}</div>
-          <div class="search-item-meta">${m.subtitle} · ${m.category}</div>
-        </div>
-        <div class="search-item-price">${formatINR(m.price)}</div>
+    searchDropdown.innerHTML = `
+      <div class="search-dropdown-head">
+        <span>Search results</span>
+        <span class="search-scope-chip">in ${scopeLabel}</span>
       </div>
-    `).join('');
+      <div class="search-empty">
+        <span class="search-empty-icon">🔎</span>
+        <p>No matches for "${safeQuery}"</p>
+        <span class="search-empty-note">Try another keyword${scope !== 'all' ? ' or switch to All Categories' : ''}.</span>
+      </div>
+      <div class="search-dropdown-foot">Press Enter to browse all deals</div>
+    `;
+  } else {
+    searchDropdown.innerHTML = `
+      <div class="search-dropdown-head">
+        <span>Suggestions</span>
+        <span class="search-scope-chip">in ${scopeLabel} · ${matches.length}</span>
+      </div>
+      ${matches.map(m => `
+        <div class="search-item" onclick="openQuickView('${m.id}'); searchDropdown.classList.remove('open');">
+          <div class="search-item-thumb"><img src="${m.image}" alt="" /></div>
+          <div class="search-item-info">
+            <div class="search-item-title">${m.title}</div>
+            <div class="search-item-meta">${m.subtitle} · ${m.category}</div>
+          </div>
+          <div class="search-item-price">${formatINR(m.price)}</div>
+        </div>
+      `).join('')}
+      <div class="search-dropdown-foot">Press Enter to browse all deals</div>
+    `;
   }
   searchDropdown.classList.add('open');
 }
@@ -817,6 +1002,7 @@ function closeAllOverlays() {
 }
 
 function closePopovers() {
+  closeSearchScopeMenu();
   document.getElementById('accountPopover').classList.remove('open');
   document.getElementById('megaMenu').classList.remove('open');
   searchDropdown.classList.remove('open');
@@ -896,6 +1082,7 @@ function scrollToSection(id) {
 window.addEventListener('DOMContentLoaded', () => {
   applyTheme(state.theme);
   document.getElementById('deliveryCityText').textContent = state.pincode;
+  initSearchScope();
   renderCategoryStrip();
   renderProducts();
   renderAllMarketplaceSections();

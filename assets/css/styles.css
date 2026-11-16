@@ -316,7 +316,7 @@ a {
 .search-wrapper {
   position: relative;
   flex: 1;
-  max-width: 620px;
+  max-width: 680px;
 }
 
 .search-bar {
@@ -325,8 +325,8 @@ a {
   background: var(--bg-surface);
   border: 1.5px solid var(--border-medium);
   border-radius: var(--radius-pill);
-  height: 46px;
-  padding: 3px 4px 3px 14px;
+  height: 48px;
+  padding: 4px 5px 4px 10px;
   box-shadow: var(--shadow-xs);
   transition: all var(--transition-fast);
 }
@@ -337,28 +337,180 @@ a {
 }
 
 .search-scope {
-  border: none;
-  background: transparent;
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: var(--text-secondary);
-  padding-right: 10px;
-  margin-right: 10px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  margin-right: 8px;
+  padding-right: 8px;
   border-right: 1px solid var(--border-medium);
-  outline: none;
-  cursor: pointer;
 }
 
-.search-scope option {
+.search-scope-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 8px;
+  border-radius: 9px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  transition: all var(--transition-fast);
+}
+
+.search-scope-btn:hover,
+.search-scope.open .search-scope-btn {
+  background: var(--brand-soft);
+  color: var(--brand-primary);
+}
+
+.search-scope-btn svg {
+  transition: transform var(--transition-fast);
+}
+
+.search-scope.open .search-scope-btn svg {
+  transform: rotate(180deg);
+}
+
+.search-scope-menu {
+  position: absolute;
+  top: calc(100% + 18px);
+  left: 0;
+  width: min(440px, calc(100vw - 32px));
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  padding: 14px;
+  z-index: 140;
+  display: none;
+}
+
+.search-scope-menu.open {
+  display: block;
+  animation: scopeMenuIn 180ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes scopeMenuIn {
+  from { opacity: 0; transform: translateY(-6px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.scope-menu-head {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 2px 4px 10px;
+}
+
+.scope-menu-eyebrow {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--brand-primary);
+}
+
+.scope-menu-sub {
+  font-size: 0.76rem;
+  color: var(--text-muted);
+}
+
+.scope-menu-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.scope-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 9px 10px;
+  border-radius: 12px;
+  border: 1px solid var(--border-light);
   background: var(--bg-surface);
-  color: var(--text-primary);
+  text-align: left;
+  transition: all var(--transition-fast);
+}
+
+.scope-option:hover {
+  background: var(--brand-soft);
+  border-color: var(--brand-soft-border);
+  transform: translateY(-1px);
+}
+
+.scope-option:focus-visible {
+  outline: 2px solid var(--brand-primary);
+  outline-offset: 2px;
+}
+
+.scope-option.active {
+  background: linear-gradient(135deg, var(--brand-primary), var(--brand-secondary));
+  border-color: transparent;
+  color: #ffffff;
+  box-shadow: 0 8px 20px rgba(11, 87, 208, 0.22);
+}
+
+.scope-option-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 9px;
+  background: var(--bg-subtle);
+  display: grid;
+  place-items: center;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+
+.scope-option.active .scope-option-icon {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.scope-option-text {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.scope-option-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  line-height: 1.25;
+  white-space: normal;
+}
+
+.scope-option-meta {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+}
+
+.scope-option.active .scope-option-meta {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.scope-option-check {
+  width: 16px;
+  height: 16px;
+  display: grid;
+  place-items: center;
+  opacity: 0;
+  flex-shrink: 0;
+}
+
+.scope-option.active .scope-option-check {
+  opacity: 1;
 }
 
 .search-input {
   flex: 1;
   border: none;
   background: transparent;
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   color: var(--text-primary);
   outline: none;
   min-width: 0;
@@ -416,6 +568,64 @@ a {
 .search-dropdown.open {
   display: block;
   animation: fadeSlideDown 180ms ease-out;
+}
+
+.search-dropdown-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 2px 8px 10px;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.search-scope-chip {
+  padding: 3px 8px;
+  border-radius: var(--radius-pill);
+  background: var(--brand-soft);
+  color: var(--brand-primary);
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0;
+  text-transform: none;
+  white-space: nowrap;
+}
+
+.search-dropdown-foot {
+  margin-top: 6px;
+  padding: 10px 8px 2px;
+  border-top: 1px solid var(--border-light);
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.search-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 18px 12px 14px;
+  text-align: center;
+}
+
+.search-empty-icon {
+  font-size: 1.5rem;
+}
+
+.search-empty p {
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.search-empty-note {
+  font-size: 0.76rem;
+  color: var(--text-muted);
 }
 
 .search-item {
@@ -2897,6 +3107,26 @@ a {
   .search-wrapper {
     order: 3;
     min-width: 100%;
+  }
+  .search-scope-menu {
+    width: calc(100vw - 32px);
+    max-height: 70vh;
+    overflow-y: auto;
+  }
+  .scope-menu-grid {
+    grid-template-columns: 1fr;
+  }
+  .utility-inner {
+    justify-content: center;
+    text-align: center;
+  }
+  .utility-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px 12px;
+  }
+  .utility-divider {
+    display: none;
   }
   .qv-grid {
     grid-template-columns: 1fr;
