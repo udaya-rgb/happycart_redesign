@@ -1790,18 +1790,22 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      min-width: 0;
     }
 
     .quad-box-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 8px;
       margin-bottom: 14px;
     }
 
     .quad-box-title {
       font-size: 1.04rem;
       font-weight: 800;
+      line-height: 1.3;
+      min-width: 0;
     }
 
     .quad-mini-grid {
@@ -1809,11 +1813,13 @@
       grid-template-columns: repeat(2, 1fr);
       gap: 12px;
       margin-bottom: 14px;
+      min-width: 0;
     }
 
     .quad-mini-item {
       cursor: pointer;
       transition: transform var(--transition-fast);
+      min-width: 0;
     }
 
     .quad-mini-item:hover {
@@ -1842,6 +1848,7 @@
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+      max-width: 100%;
     }
 
     .quad-footer-link {
