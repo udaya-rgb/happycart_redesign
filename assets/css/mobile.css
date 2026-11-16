@@ -76,65 +76,17 @@
   }
 
   /* ------------------------------------------------------------------------
-     TOP UTILITY BAR — compact horizontally scrollable strip
+     TOP UTILITY BAR — hidden entirely on phones
      ------------------------------------------------------------------------ */
   .utility-bar {
-    padding-top: calc(0px + env(safe-area-inset-top, 0px));
-    font-size: 0.7rem;
-  }
-
-  .utility-inner {
-    flex-wrap: nowrap;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 10px;
-    min-height: 34px;
-    padding: 5px 0;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-  }
-
-  .utility-inner::-webkit-scrollbar {
     display: none;
-  }
-
-  .utility-promo {
-    flex: 0 0 auto;
-    font-size: 0.7rem;
-    white-space: nowrap;
-  }
-
-  .utility-promo svg {
-    width: 14px;
-    height: 14px;
-  }
-
-  .utility-links {
-    flex: 0 0 auto;
-    flex-wrap: nowrap;
-    gap: 8px;
-  }
-
-  .utility-link {
-    font-size: 0.7rem;
-  }
-
-  .utility-divider {
-    display: none;
-  }
-
-  .theme-toggle-btn {
-    flex: 0 0 auto;
-    padding: 3px 9px;
-    font-size: 0.68rem;
-    white-space: nowrap;
   }
 
   /* ------------------------------------------------------------------------
      HEADER — app bar with brand, actions, then full-width search
      ------------------------------------------------------------------------ */
   .site-header {
+    padding-top: calc(0px + env(safe-area-inset-top, 0px));
     -webkit-backdrop-filter: blur(16px);
     backdrop-filter: blur(16px);
   }
