@@ -13,16 +13,7 @@ const PRODUCTS = [
     rating: 4.8,
     reviews: '12,480',
     highlights: ['Active Noise Cancellation up to 45dB', '40-Hour Total Playtime with Fast Charge', 'Dual-Device Bluetooth 5.4 Multipoint'],
-    svg: `
-      <svg viewBox="0 0 140 140" fill="none">
-        <rect x="30" y="42" width="80" height="72" rx="28" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2.5"/>
-        <path d="M30 68 H110" stroke="#e2e8f0" stroke-width="2"/>
-        <circle cx="70" cy="84" r="3" fill="#10b981"/>
-        <rect x="44" y="24" width="18" height="44" rx="9" fill="#ffffff" stroke="#94a3b8" stroke-width="2"/>
-        <circle cx="51" cy="34" r="6" fill="#0f172a"/>
-        <rect x="78" y="24" width="18" height="44" rx="9" fill="#ffffff" stroke="#94a3b8" stroke-width="2"/>
-        <circle cx="89" cy="34" r="6" fill="#0f172a"/>
-      </svg>`
+    image: 'assets/images/products/earbuds-anc.jpg'
   },
   {
     id: 'smartwatch-bt',
@@ -35,16 +26,7 @@ const PRODUCTS = [
     rating: 4.6,
     reviews: '9,310',
     highlights: ['1.96" Always-On AMOLED Display', 'Crystal-Clear Single-Chip BT Calling', '24/7 SpO2, Heart Rate & 100+ Sports Modes'],
-    svg: `
-      <svg viewBox="0 0 140 140" fill="none">
-        <path d="M54 14 H86 L82 38 H58 Z" fill="#1e293b"/>
-        <path d="M58 102 H82 L86 126 H54 Z" fill="#1e293b"/>
-        <rect x="44" y="34" width="52" height="72" rx="16" fill="#0f172a" stroke="#475569" stroke-width="3"/>
-        <rect x="50" y="40" width="40" height="60" rx="11" fill="#04132e"/>
-        <text x="57" y="67" fill="#38bdf8" font-family="Plus Jakarta Sans, sans-serif" font-weight="800" font-size="16">10</text>
-        <text x="57" y="86" fill="#60a5fa" font-family="Plus Jakarta Sans, sans-serif" font-weight="800" font-size="16">08</text>
-        <circle cx="80" cy="90" r="3" fill="#10b981"/>
-      </svg>`
+    image: 'assets/images/products/smartwatch-bt.jpg'
   },
   {
     id: 'laptop-14-i5',
@@ -57,14 +39,7 @@ const PRODUCTS = [
     rating: 4.7,
     reviews: '4,820',
     highlights: ['14" Full HD+ Anti-Glare IPS Display', '13th Gen Core i5 · 16GB LPDDR5 · 512GB NVMe SSD', 'Featherlight 1.38kg Aluminum Chassis'],
-    svg: `
-      <svg viewBox="0 0 140 140" fill="none">
-        <rect x="24" y="30" width="92" height="64" rx="7" fill="#0f172a" stroke="#64748b" stroke-width="2.5"/>
-        <rect x="30" y="36" width="80" height="52" rx="3" fill="#1d4ed8"/>
-        <path d="M30 72 C55 48, 85 82, 110 52 L110 88 L30 88 Z" fill="#38bdf8" opacity="0.55"/>
-        <path d="M12 94 H128 L122 104 H18 Z" fill="#cbd5e1"/>
-        <rect x="58" y="94" width="24" height="3" rx="1.5" fill="#64748b"/>
-      </svg>`
+    image: 'assets/images/products/laptop-14-i5.jpg'
   },
   {
     id: 'mirrorless-camera',
@@ -77,16 +52,7 @@ const PRODUCTS = [
     rating: 4.9,
     reviews: '2,190',
     highlights: ['24.2MP APS-C Exmor CMOS Sensor', '4K 60fps 10-Bit Cinematic Video Recording', 'Real-Time Eye Autofocus & Vari-Angle LCD'],
-    svg: `
-      <svg viewBox="0 0 140 140" fill="none">
-        <rect x="20" y="42" width="100" height="64" rx="12" fill="#1e293b" stroke="#475569" stroke-width="2.5"/>
-        <path d="M46 42 L54 28 H86 L94 42 Z" fill="#0f172a"/>
-        <rect x="28" y="36" width="14" height="6" rx="2" fill="#94a3b8"/>
-        <circle cx="74" cy="74" r="26" fill="#0f172a" stroke="#cbd5e1" stroke-width="3"/>
-        <circle cx="74" cy="74" r="18" fill="#1e3a8a" stroke="#38bdf8" stroke-width="1.5"/>
-        <circle cx="74" cy="74" r="9" fill="#020617"/>
-        <circle cx="69" cy="69" r="3" fill="#93c5fd"/>
-      </svg>`
+    image: 'assets/images/products/mirrorless-camera.jpg'
   },
   {
     id: 'gaming-headset',
@@ -99,15 +65,7 @@ const PRODUCTS = [
     rating: 4.5,
     reviews: '15,640',
     highlights: ['Virtual 7.1 Spatial Surround Drivers', 'Dynamic RGB Breathing Earcup Rings', 'Detachable Noise-Isolating Boom Mic'],
-    svg: `
-      <svg viewBox="0 0 140 140" fill="none">
-        <path d="M36 74 C36 32, 104 32, 104 74" stroke="#1e293b" stroke-width="10" stroke-linecap="round"/>
-        <rect x="26" y="64" width="22" height="42" rx="11" fill="#0f172a"/>
-        <rect x="92" y="64" width="22" height="42" rx="11" fill="#0f172a"/>
-        <circle cx="99" cy="85" r="10" stroke="#ec4899" stroke-width="2.5"/>
-        <circle cx="99" cy="85" r="6" stroke="#38bdf8" stroke-width="2"/>
-        <path d="M36 98 Q44 118 68 116" stroke="#475569" stroke-width="3" stroke-linecap="round"/>
-      </svg>`
+    image: 'assets/images/products/gaming-headset.jpg'
   },
   {
     id: 'portable-speaker-20w',
@@ -120,14 +78,7 @@ const PRODUCTS = [
     rating: 4.8,
     reviews: '8,940',
     highlights: ['20W Racetrack Driver + Dual Bass Radiators', 'IP67 Waterproof & Dustproof Rugged Fabric', 'Bluetooth 5.3 with PartyBoost Stereo Pairing'],
-    svg: `
-      <svg viewBox="0 0 140 140" fill="none">
-        <rect x="18" y="48" width="104" height="46" rx="22" fill="#1e293b" stroke="#0f172a" stroke-width="3"/>
-        <rect x="14" y="54" width="10" height="34" rx="5" fill="#f97316"/>
-        <rect x="116" y="54" width="10" height="34" rx="5" fill="#f97316"/>
-        <rect x="52" y="61" width="36" height="20" rx="4" fill="#ea580c"/>
-        <text x="58" y="75" fill="#ffffff" font-family="Plus Jakarta Sans, sans-serif" font-weight="800" font-size="11">NOVA</text>
-      </svg>`
+    image: 'assets/images/products/portable-speaker-20w.jpg'
   }
 ];
 
@@ -145,7 +96,7 @@ const EXTRA_PRODUCTS = [
     rating: 4.8,
     reviews: '6,410',
     highlights: ['Charges MacBook, iPhone & Earbuds simultaneously', 'GaN III Cool-Tech thermal protection', 'Foldable Indian pins'],
-    svg: `<svg viewBox="0 0 140 140" fill="none"><rect x="44" y="34" width="52" height="68" rx="14" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2.5"/><rect x="56" y="48" width="28" height="8" rx="4" fill="#0b57d0"/><rect x="56" y="62" width="28" height="8" rx="4" fill="#0b57d0"/><rect x="56" y="76" width="28" height="10" rx="3" fill="#38bdf8"/><rect x="54" y="102" width="8" height="16" rx="4" fill="#94a3b8"/><rect x="78" y="102" width="8" height="16" rx="4" fill="#94a3b8"/></svg>`
+    image: 'assets/images/products/gan-charger-65w.jpg'
   },
   {
     id: 'powerbank-20k',
@@ -159,7 +110,7 @@ const EXTRA_PRODUCTS = [
     rating: 4.7,
     reviews: '8,120',
     highlights: ['Strong N52 Magnetic Snap Alignment', 'Digital LED Battery Percentage Display', 'Airline-Safe Li-Polymer Cells'],
-    svg: `<svg viewBox="0 0 140 140" fill="none"><rect x="40" y="22" width="60" height="96" rx="16" fill="#0f172a" stroke="#3b82f6" stroke-width="2.5"/><circle cx="70" cy="64" r="20" stroke="#38bdf8" stroke-width="4"/><line x1="70" y1="84" x2="70" y2="98" stroke="#38bdf8" stroke-width="4" stroke-linecap="round"/></svg>`
+    image: 'assets/images/products/powerbank-20k.jpg'
   },
   {
     id: 'nvme-ssd-1tb',
@@ -173,7 +124,7 @@ const EXTRA_PRODUCTS = [
     rating: 4.9,
     reviews: '3,950',
     highlights: ['Blazing 1050MB/s Read & Write Speeds', 'Shock-Resistant Anodized Aluminum Body', 'Includes USB-C to C & USB-A Cables'],
-    svg: `<svg viewBox="0 0 140 140" fill="none"><rect x="42" y="28" width="56" height="84" rx="12" fill="#1e293b" stroke="#64748b" stroke-width="2.5"/><rect x="52" y="42" width="36" height="44" rx="6" fill="#0b57d0"/><circle cx="70" cy="100" r="4" fill="#38bdf8"/></svg>`
+    image: 'assets/images/products/nvme-ssd-1tb.jpg'
   },
   {
     id: 'usb-c-hub-7in1',
@@ -187,7 +138,7 @@ const EXTRA_PRODUCTS = [
     rating: 4.6,
     reviews: '5,290',
     highlights: ['4K @ 60Hz Ultra-HD HDMI Output', '100W Pass-Through Power Delivery', '3x USB 3.0 High-Speed Ports'],
-    svg: `<svg viewBox="0 0 140 140" fill="none"><rect x="24" y="54" width="92" height="32" rx="8" fill="#cbd5e1" stroke="#475569" stroke-width="2"/><rect x="34" y="64" width="14" height="12" rx="2" fill="#0f172a"/><rect x="54" y="64" width="14" height="12" rx="2" fill="#0f172a"/><rect x="74" y="64" width="14" height="12" rx="2" fill="#0b57d0"/></svg>`
+    image: 'assets/images/products/usb-c-hub-7in1.jpg'
   },
   {
     id: 'smart-cam-360',
@@ -201,7 +152,7 @@ const EXTRA_PRODUCTS = [
     rating: 4.7,
     reviews: '11,040',
     highlights: ['360° Pan & 114° Vertical Tilt Coverage', 'AI Human Motion Detection Alerts', 'Supports up to 256GB microSD + Cloud'],
-    svg: `<svg viewBox="0 0 140 140" fill="none"><circle cx="70" cy="62" r="30" fill="#f8fafc" stroke="#94a3b8" stroke-width="2.5"/><circle cx="70" cy="62" r="16" fill="#0f172a"/><circle cx="70" cy="62" r="7" fill="#2563eb"/><rect x="46" y="92" width="48" height="18" rx="9" fill="#cbd5e1"/></svg>`
+    image: 'assets/images/products/smart-cam-360.jpg'
   },
   {
     id: 'surge-protector',
@@ -215,7 +166,7 @@ const EXTRA_PRODUCTS = [
     rating: 4.6,
     reviews: '4,680',
     highlights: ['App & Voice Control (Alexa & Google Home)', '1500J Surge & Overload Protection', 'Individual Socket Scheduling'],
-    svg: `<svg viewBox="0 0 140 140" fill="none"><rect x="22" y="48" width="96" height="44" rx="12" fill="#f8fafc" stroke="#64748b" stroke-width="2.5"/><circle cx="44" cy="70" r="8" fill="#0f172a"/><circle cx="68" cy="70" r="8" fill="#0f172a"/><circle cx="92" cy="70" r="8" fill="#0b57d0"/></svg>`
+    image: 'assets/images/products/surge-protector.jpg'
   },
   {
     id: 'air-fryer-45l',
@@ -229,7 +180,7 @@ const EXTRA_PRODUCTS = [
     rating: 4.8,
     reviews: '7,820',
     highlights: ['360° Rapid Air Crisp Convection', 'Touch LED Digital Control Panel', 'Dishwasher-Safe Non-Stick Basket'],
-    svg: `<svg viewBox="0 0 140 140" fill="none"><rect x="38" y="24" width="64" height="92" rx="18" fill="#0f172a" stroke="#38bdf8" stroke-width="2.5"/><rect x="46" y="68" width="48" height="38" rx="10" fill="#1e293b" stroke="#f59e0b" stroke-width="2"/><circle cx="70" cy="46" r="10" stroke="#38bdf8" stroke-width="2"/></svg>`
+    image: 'assets/images/products/air-fryer-45l.jpg'
   },
   {
     id: 'vitamin-c-serum',
@@ -243,7 +194,7 @@ const EXTRA_PRODUCTS = [
     rating: 4.7,
     reviews: '14,210',
     highlights: ['Pure L-Ascorbic Acid + Ferulic Acid', 'Brightens Dark Spots & Boosts Collagen', 'Fragrance-Free & Non-Comedogenic'],
-    svg: `<svg viewBox="0 0 140 140" fill="none"><rect x="52" y="48" width="36" height="64" rx="8" fill="#fbbf24" stroke="#d97706" stroke-width="2"/><rect x="60" y="32" width="20" height="16" rx="4" fill="#0f172a"/><rect x="66" y="20" width="8" height="12" rx="4" fill="#94a3b8"/></svg>`
+    image: 'assets/images/products/vitamin-c-serum.jpg'
   },
   {
     id: 'espresso-maker',
@@ -257,7 +208,7 @@ const EXTRA_PRODUCTS = [
     rating: 4.8,
     reviews: '3,110',
     highlights: ['15-Bar Italian Pump for Rich Crema', '360° Swivel Steam Wand for Cappuccinos', '1.5L Removable Transparent Water Tank'],
-    svg: `<svg viewBox="0 0 140 140" fill="none"><rect x="36" y="26" width="68" height="88" rx="12" fill="#1e293b" stroke="#94a3b8" stroke-width="2.5"/><circle cx="70" cy="46" r="10" fill="#38bdf8"/><rect x="56" y="76" width="28" height="24" rx="4" fill="#f8fafc"/></svg>`
+    image: 'assets/images/products/espresso-maker.jpg'
   },
   {
     id: 'air-purifier-hepa',
@@ -271,7 +222,7 @@ const EXTRA_PRODUCTS = [
     rating: 4.7,
     reviews: '5,490',
     highlights: ['Captures 99.97% Allergens, Dust & Smoke', 'Whisper-Quiet 22dB Sleep Mode', 'Real-Time Air Quality Color Ring'],
-    svg: `<svg viewBox="0 0 140 140" fill="none"><rect x="44" y="22" width="52" height="96" rx="22" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2.5"/><circle cx="70" cy="48" r="14" stroke="#10b981" stroke-width="3"/><line x1="54" y1="76" x2="86" y2="76" stroke="#94a3b8" stroke-width="2"/><line x1="54" y1="86" x2="86" y2="86" stroke="#94a3b8" stroke-width="2"/></svg>`
+    image: 'assets/images/products/air-purifier-hepa.jpg'
   },
   {
     id: 'electric-toothbrush',
@@ -285,7 +236,7 @@ const EXTRA_PRODUCTS = [
     rating: 4.8,
     reviews: '9,870',
     highlights: ['42,000 Micro-Brushes Per Minute', 'Smart 2-Minute QuadPacer Timer', 'Includes 4 DuPont Replacement Heads'],
-    svg: `<svg viewBox="0 0 140 140" fill="none"><rect x="63" y="54" width="14" height="66" rx="7" fill="#0b57d0"/><rect x="67" y="22" width="6" height="32" rx="3" fill="#e2e8f0"/><rect x="60" y="22" width="10" height="14" rx="3" fill="#38bdf8"/></svg>`
+    image: 'assets/images/products/electric-toothbrush.jpg'
   },
   {
     id: 'aroma-diffuser',
@@ -299,7 +250,7 @@ const EXTRA_PRODUCTS = [
     rating: 4.6,
     reviews: '4,320',
     highlights: ['Whisper-Quiet Ultrasonic Cool Mist', '7 Soothing Mood Lighting Presets', 'BPA-Free 400ml Capacity'],
-    svg: `<svg viewBox="0 0 140 140" fill="none"><path d="M44 96 C44 64, 96 64, 96 96 Z" fill="#e0f2fe" stroke="#0284c7" stroke-width="2.5"/><path d="M64 56 Q70 42 76 56" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round"/></svg>`
+    image: 'assets/images/products/aroma-diffuser.jpg'
   }
 ];
 
@@ -380,7 +331,7 @@ const HERO_SPECIAL_ITEMS = {
     price: 134900,
     mrp: 144900,
     discount: 7,
-    svg: PRODUCTS[2].svg
+    image: 'assets/images/hero/hero-iphone.jpg'
   }
 };
 

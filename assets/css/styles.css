@@ -964,6 +964,16 @@ a {
   filter: drop-shadow(0 24px 36px rgba(9, 26, 58, 0.28));
 }
 
+.hero-visual img {
+  width: 100%;
+  max-width: 390px;
+  aspect-ratio: 9 / 7;
+  object-fit: cover;
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  box-shadow: 0 24px 48px rgba(9, 26, 58, 0.28);
+}
+
 /* Carousel Arrows */
 .carousel-arrow {
   position: absolute;
@@ -1255,6 +1265,16 @@ a {
   transform: scale(1.06) rotate(-1.5deg);
 }
 
+.bento-graphic img {
+  width: 100%;
+  max-width: 190px;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  box-shadow: var(--shadow-sm);
+}
+
 /* Split Promo Bento: Two Stacked Rectangles + One Tall Square */
 .promo-split-section {
   padding: 12px 0 36px;
@@ -1298,6 +1318,20 @@ a {
   width: 100%;
   justify-content: flex-end;
   margin-top: 12px;
+}
+
+.promo-split-grid .bento-graphic img {
+  width: 100%;
+  max-width: 230px;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  box-shadow: var(--shadow-sm);
+}
+
+.promo-square .bento-graphic img {
+  max-width: 320px;
 }
 
 .promo-chip-row {
@@ -1668,6 +1702,61 @@ a {
   width: 118px;
   height: 118px;
   transition: transform var(--transition-smooth);
+}
+
+.product-visual-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  transition: transform var(--transition-smooth);
+}
+
+.product-card:hover .product-visual-box svg,
+.product-card:hover .product-visual-box img {
+  transform: scale(1.06);
+}
+
+.quad-mini-thumb img {
+  width: 68px;
+  height: 68px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.history-thumb img {
+  width: 74px;
+  height: 74px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.cart-item-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.search-item-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.qv-visual img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+}
+
+.compare-col img {
+  width: 100%;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 8px;
 }
 
 .product-card:hover .product-visual-box svg {
@@ -2695,6 +2784,9 @@ a {
   }
   .hero-visual svg {
     max-width: 260px;
+  }
+  .hero-visual img {
+    max-width: 300px;
   }
   .location-btn, .hide-mobile {
     display: none;

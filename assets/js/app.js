@@ -198,7 +198,7 @@ function buildProductCardHTML(product) {
       </div>
 
       <div class="product-visual-box" onclick="openQuickView('${product.id}')">
-        ${product.svg}
+        <img src="${product.image}" alt="" loading="lazy" />
         <span class="quick-view-pill">Quick View</span>
       </div>
 
@@ -282,7 +282,7 @@ function renderAllMarketplaceSections() {
         <div class="quad-mini-grid">
           ${miniItems.map(item => `
             <div class="quad-mini-item" onclick="openQuickView('${item.id}')">
-              <div class="quad-mini-thumb">${item.svg}</div>
+              <div class="quad-mini-thumb"><img src="${item.image}" alt="" loading="lazy" /></div>
               <div class="quad-mini-label">${item.title}</div>
             </div>
           `).join('')}
@@ -329,7 +329,7 @@ function renderBrowsingHistory() {
   }
   container.innerHTML = items.slice(0, 6).map(item => `
     <div class="history-card" onclick="openQuickView('${item.id}')">
-      <div class="history-thumb">${item.svg}</div>
+      <div class="history-thumb"><img src="${item.image}" alt="" loading="lazy" /></div>
       <div style="font-size: 0.8rem; font-weight: 700; margin-bottom: 2px;">${item.title}</div>
       <div style="font-size: 0.82rem; font-weight: 800; color: var(--brand-primary);">${formatINR(item.price)}</div>
     </div>
@@ -530,7 +530,7 @@ function openCompareModal() {
       <div class="compare-grid">
         ${items.map(p => `
           <div class="compare-col">
-            <div style="height: 90px; display: grid; place-items: center; margin-bottom: 8px;">${p.svg}</div>
+            <div style="height: 90px; display: grid; place-items: center; margin-bottom: 8px;"><img src="${p.image}" alt="" /></div>
             <div style="font-weight: 800; font-size: 0.92rem; margin-bottom: 4px;">${p.title}</div>
             <div style="color: var(--brand-primary); font-weight: 800; font-size: 1.05rem; margin-bottom: 4px;">${formatINR(p.price)}</div>
             <div style="font-size: 0.78rem; color: var(--warning); font-weight: 700; margin-bottom: 8px;">★ ${p.rating} (${p.reviews})</div>
@@ -593,7 +593,7 @@ function renderCartDrawer() {
   } else {
     container.innerHTML = state.cart.map(item => `
       <div class="cart-item">
-        <div class="cart-item-img">${item.svg}</div>
+        <div class="cart-item-img">${item.image ? `<img src="${item.image}" alt="" />` : (item.svg || '')}</div>
         <div class="cart-item-details">
           <div class="cart-item-name">${item.title}</div>
           <div style="font-size: 0.74rem; color: var(--text-muted); margin-bottom: 4px;">${item.subtitle}</div>
@@ -694,7 +694,7 @@ function renderSearchDropdown(query) {
   } else {
     searchDropdown.innerHTML = matches.map(m => `
       <div class="search-item" onclick="openQuickView('${m.id}'); searchDropdown.classList.remove('open');">
-        <div class="search-item-thumb">${m.svg}</div>
+        <div class="search-item-thumb"><img src="${m.image}" alt="" /></div>
         <div class="search-item-info">
           <div class="search-item-title">${m.title}</div>
           <div class="search-item-meta">${m.subtitle} · ${m.category}</div>
@@ -734,7 +734,7 @@ function openQuickView(productId) {
 
   document.getElementById('quickViewContent').innerHTML = `
     <div class="qv-grid">
-      <div class="qv-visual">${p.svg}</div>
+      <div class="qv-visual"><img src="${p.image}" alt="" /></div>
       <div>
         <span class="discount-badge" style="display: inline-block; margin-bottom: 8px;">-${p.discount}% Limited Deal</span>
         <h3 style="font-size: 1.38rem; font-weight: 800; margin-bottom: 4px;">${p.title}</h3>
