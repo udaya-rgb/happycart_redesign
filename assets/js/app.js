@@ -112,17 +112,27 @@ heroCarousel.addEventListener('mouseleave', () => {
 // =========================================================================
 function renderCategoryStrip() {
   const grid = document.getElementById('categoryGrid');
-  grid.innerHTML = CATEGORIES.map(cat => `
-    <button class="cat-card" onclick="handleCategoryTileClick('${cat.name}', '${cat.filter}', this)">
+  const card = (cat, index, isClone = false) => `
+    <button class="cat-card" data-cat-index="${index}" ${isClone ? 'tabindex="-1"' : ''} onclick="handleCategoryTileClick('${cat.name}', '${cat.filter}', this)">
       <div class="cat-icon-tile">${cat.svg}</div>
       <span class="cat-label">${cat.name}</span>
     </button>
-  `).join('');
+  `;
+  const cards = CATEGORIES.map((cat, index) => card(cat, index)).join('');
+  const clonedCards = CATEGORIES.map((cat, index) => card(cat, index, true)).join('');
+  grid.innerHTML = `
+    <div class="category-track">
+      <div class="category-set">${cards}</div>
+      <div class="category-set" aria-hidden="true">${clonedCards}</div>
+    </div>
+  `;
 }
 
 function handleCategoryTileClick(name, filter, btnEl) {
-  document.querySelectorAll('.cat-card').forEach(c => c.classList.remove('active'));
-  btnEl.classList.add('active');
+  const selectedIndex = btnEl.dataset.catIndex;
+  document.querySelectorAll('.cat-card').forEach(c => {
+    c.classList.toggle('active', c.dataset.catIndex === selectedIndex);
+  });
   setDealFilter(filter);
   scrollToSection('deals');
   showToast(`Browsing ${name}`);
