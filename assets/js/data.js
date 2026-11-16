@@ -309,7 +309,7 @@ const DISCOVERY_QUADS = [
 ];
 
 const COUPONS_DATA = [
-  { tag: 'Electronics Special', title: 'Flat ₹500 Instant Off', desc: 'Valid on orders above ₹2,999', code: 'NOVA500', discount: 500 },
+  { tag: 'Electronics Special', title: 'Flat ₹500 Instant Off', desc: 'Valid on orders above ₹2,999', code: 'HAPPY500', discount: 500 },
   { tag: 'HDFC & ICICI Cards', title: '10% Bank Cashback', desc: 'Up to ₹1,500 on Credit/Debit EMI', code: 'BANK10', discount: 350 },
   { tag: 'New User Welcome', title: 'Extra ₹100 Off First Order', desc: 'Applicable across all categories', code: 'FIRST100', discount: 100 },
   { tag: 'Audio & Gaming Fest', title: 'Flat ₹250 Off Audio', desc: 'On Earbuds, Headsets & Speakers', code: 'SOUND250', discount: 250 }

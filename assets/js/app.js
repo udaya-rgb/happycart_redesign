@@ -2,12 +2,12 @@
 // C. STATE MANAGEMENT WITH LOCALSTORAGE PERSISTENCE
 // =========================================================================
 const state = {
-  theme: localStorage.getItem('shopnova_theme') || 'light',
-  pincode: localStorage.getItem('shopnova_pincode') || 'Chennai 600001',
-  cart: JSON.parse(localStorage.getItem('shopnova_cart') || '[]'),
-  wishlist: JSON.parse(localStorage.getItem('shopnova_wishlist') || '[]'),
-  compare: JSON.parse(localStorage.getItem('shopnova_compare') || '[]'),
-  history: JSON.parse(localStorage.getItem('shopnova_history') || '["earbuds-anc","smartwatch-bt","laptop-14-i5","mirrorless-camera","gan-charger-65w","air-fryer-45l"]'),
+  theme: localStorage.getItem('happycart_theme') || 'light',
+  pincode: localStorage.getItem('happycart_pincode') || 'Chennai 600001',
+  cart: JSON.parse(localStorage.getItem('happycart_cart') || '[]'),
+  wishlist: JSON.parse(localStorage.getItem('happycart_wishlist') || '[]'),
+  compare: JSON.parse(localStorage.getItem('happycart_compare') || '[]'),
+  history: JSON.parse(localStorage.getItem('happycart_history') || '["earbuds-anc","smartwatch-bt","laptop-14-i5","mirrorless-camera","gan-charger-65w","air-fryer-45l"]'),
   appliedCoupon: null,
   activeFilter: 'all',
   searchQuery: '',
@@ -15,12 +15,12 @@ const state = {
 };
 
 function saveState() {
-  localStorage.setItem('shopnova_theme', state.theme);
-  localStorage.setItem('shopnova_pincode', state.pincode);
-  localStorage.setItem('shopnova_cart', JSON.stringify(state.cart));
-  localStorage.setItem('shopnova_wishlist', JSON.stringify(state.wishlist));
-  localStorage.setItem('shopnova_compare', JSON.stringify(state.compare));
-  localStorage.setItem('shopnova_history', JSON.stringify(state.history));
+  localStorage.setItem('happycart_theme', state.theme);
+  localStorage.setItem('happycart_pincode', state.pincode);
+  localStorage.setItem('happycart_cart', JSON.stringify(state.cart));
+  localStorage.setItem('happycart_wishlist', JSON.stringify(state.wishlist));
+  localStorage.setItem('happycart_compare', JSON.stringify(state.compare));
+  localStorage.setItem('happycart_history', JSON.stringify(state.history));
 }
 
 function formatINR(num) {
@@ -403,7 +403,7 @@ function applyCartCoupon() {
     renderCartDrawer();
     showToast('✅ Newsletter coupon "WELCOME100" applied!');
   } else {
-    showToast('Invalid promo code. Try NOVA500, BANK10, or FIRST100.');
+    showToast('Invalid promo code. Try HAPPY500, BANK10, or FIRST100.');
   }
 }
 
@@ -611,7 +611,7 @@ function renderCartDrawer() {
     container.innerHTML = `
       <div style="text-align: center; padding: 48px 16px; color: var(--text-muted);">
         <div style="font-size: 2.6rem; margin-bottom: 10px;">🛍️</div>
-        <p style="font-weight: 700; color: var(--text-primary); margin-bottom: 6px;">Your ShopNova cart is empty</p>
+            <p style="font-weight: 700; color: var(--text-primary); margin-bottom: 6px;">Your cart is empty</p>
         <p style="font-size: 0.82rem; margin-bottom: 18px;">Explore Today's Deals to add electronics, wearables &amp; gadgets.</p>
         <button class="btn-hero-primary" onclick="closeAllOverlays(); scrollToSection('deals')">Explore Deals</button>
       </div>
