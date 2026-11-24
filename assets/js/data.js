@@ -351,3 +351,149 @@ const CATEGORIES = [
   { name: 'Sports', filter: 'all', svg: `<svg width="42" height="42" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="14" fill="#ea580c"/><path d="M10 24H38M24 10V38" stroke="#7c2d12" stroke-width="2"/></svg>` },
   { name: 'More', filter: 'all', svg: `<svg width="42" height="42" viewBox="0 0 48 48" fill="none"><rect x="13" y="13" width="9" height="9" rx="2" stroke="#0b57d0" stroke-width="2.4"/><rect x="26" y="13" width="9" height="9" rx="2" stroke="#0b57d0" stroke-width="2.4"/><rect x="13" y="26" width="9" height="9" rx="2" stroke="#0b57d0" stroke-width="2.4"/><rect x="26" y="26" width="9" height="9" rx="2" stroke="#0b57d0" stroke-width="2.4"/></svg>` }
 ];
+
+const CATEGORY_MENU = {
+  Mobiles: {
+    icon: 'mobile',
+    subs: [
+      { label: 'Mobiles', filter: 'Computing', icon: 'mobile' },
+      { label: 'Tablets', filter: 'Computing', icon: 'mobile-off' },
+      { label: 'Smart Wearables', filter: 'Audio & Wearables', icon: 'watch' },
+      { label: 'Audio Devices', filter: 'Audio & Wearables', icon: 'headphone' },
+      { label: 'Mobile Gadgets', filter: 'Power & Tech', icon: 'package' },
+      { label: 'Chargers & Power Banks', filter: 'Power & Tech', icon: 'battery' },
+      { label: 'Cables & Adapters', filter: 'Power & Tech', icon: 'plug' },
+      { label: 'Gaming Accessories', filter: 'Gaming', icon: 'video-game' }
+    ]
+  },
+  Laptops: {
+    icon: 'laptop',
+    subs: [
+      { label: 'Laptops', filter: 'Computing', icon: 'laptop' },
+      { label: 'Ultrabooks', filter: 'Computing', icon: 'laptop' },
+      { label: 'Gaming Laptops', filter: 'Gaming', icon: 'video-game' },
+      { label: 'Monitors', filter: 'Computing', icon: 'desktop' },
+      { label: 'Keyboards & Mice', filter: 'Computing', icon: 'keyboard' },
+      { label: 'Computer Accessories', filter: 'Computing', icon: 'mouse' },
+      { label: 'Printers', filter: 'Computing', icon: 'printer' },
+      { label: 'Storage & Drives', filter: 'Computing', icon: 'disk' }
+    ]
+  },
+  Electronics: {
+    icon: 'headphone',
+    subs: [
+      { label: 'Audio Devices', filter: 'Audio & Wearables', icon: 'headphone' },
+      { label: 'Headphones', filter: 'Audio & Wearables', icon: 'headphone' },
+      { label: 'Earbuds', filter: 'Audio & Wearables', icon: 'headphone' },
+      { label: 'Speakers', filter: 'Audio & Wearables', icon: 'speaker' },
+      { label: 'Smartwatches', filter: 'Audio & Wearables', icon: 'watch' },
+      { label: 'Cameras', filter: 'Cameras', icon: 'camera' },
+      { label: 'TV & Entertainment', filter: 'Audio & Wearables', icon: 'television' },
+      { label: 'Cables & Adapters', filter: 'Power & Tech', icon: 'plug' }
+    ]
+  },
+  Fashion: {
+    icon: 'dress',
+    subs: [
+      { label: "Men's Clothing", filter: 'all', icon: 'tshirt' },
+      { label: "Women's Clothing", filter: 'all', icon: 'dress' },
+      { label: 'Footwear', filter: 'all', icon: 'running-shoe' },
+      { label: 'Watches', filter: 'all', icon: 'watch' },
+      { label: 'Bags & Luggage', filter: 'all', icon: 'handbag' },
+      { label: 'Eyewear', filter: 'all', icon: 'glasses' },
+      { label: 'Jewellery', filter: 'all', icon: 'gem' },
+      { label: 'Ethnic Wear', filter: 'all', icon: 'dress' }
+    ]
+  },
+  'Home & Kitchen': {
+    icon: 'cooking',
+    subs: [
+      { label: 'Kitchen Appliances', filter: 'Home & Kitchen', icon: 'cooking' },
+      { label: 'Cookware', filter: 'Home & Kitchen', icon: 'knife' },
+      { label: 'Home Decor', filter: 'Home & Kitchen', icon: 'house' },
+      { label: 'Furniture', filter: 'Home & Kitchen', icon: 'chair' },
+      { label: 'Bedding', filter: 'Home & Kitchen', icon: 'bed' },
+      { label: 'Storage', filter: 'Home & Kitchen', icon: 'package' },
+      { label: 'Cleaning', filter: 'Home & Kitchen', icon: 'broom' },
+      { label: 'Small Appliances', filter: 'Home & Kitchen', icon: 'plug' }
+    ]
+  },
+  Appliances: {
+    icon: 'plug',
+    subs: [
+      { label: 'Air Coolers & Fans', filter: 'all', icon: 'fan' },
+      { label: 'Washing & Laundry', filter: 'all', icon: 'bucket' },
+      { label: 'Kitchen Appliances', filter: 'all', icon: 'cooking' },
+      { label: 'Water Heaters', filter: 'all', icon: 'fire' },
+      { label: 'Vacuum & Cleaning', filter: 'all', icon: 'broom' },
+      { label: 'Lighting', filter: 'all', icon: 'bulb' },
+      { label: 'Home Entertainment', filter: 'all', icon: 'television' },
+      { label: 'Electricals', filter: 'all', icon: 'plug' }
+    ]
+  },
+  Beauty: {
+    icon: 'lipstick',
+    subs: [
+      { label: 'Skincare', filter: 'Beauty', icon: 'lotion' },
+      { label: 'Haircare', filter: 'Beauty', icon: 'shower' },
+      { label: 'Makeup', filter: 'Beauty', icon: 'lipstick' },
+      { label: 'Fragrances', filter: 'Beauty', icon: 'perfume' },
+      { label: 'Personal Care', filter: 'Beauty', icon: 'toothbrush' },
+      { label: 'Grooming', filter: 'Beauty', icon: 'scissors' },
+      { label: 'Bath & Body', filter: 'Beauty', icon: 'bathtub' },
+      { label: 'Wellness', filter: 'Beauty', icon: 'green-apple' }
+    ]
+  },
+  'Toys & Games': {
+    icon: 'teddy',
+    subs: [
+      { label: 'Gaming Consoles', filter: 'Gaming', icon: 'video-game' },
+      { label: 'Video Games', filter: 'Gaming', icon: 'joystick' },
+      { label: 'Action Figures', filter: 'all', icon: 'teddy' },
+      { label: 'Board Games', filter: 'Gaming', icon: 'game-die' },
+      { label: 'Learning Toys', filter: 'all', icon: 'puzzle' },
+      { label: 'Outdoor Toys', filter: 'all', icon: 'bicycle' },
+      { label: 'Puzzles', filter: 'all', icon: 'puzzle' },
+      { label: 'Collectibles', filter: 'all', icon: 'package' }
+    ]
+  },
+  Books: {
+    icon: 'books',
+    subs: [
+      { label: 'Fiction', filter: 'all', icon: 'blue-book' },
+      { label: 'Non-Fiction', filter: 'all', icon: 'closed-book' },
+      { label: 'Academic', filter: 'all', icon: 'books' },
+      { label: "Children's Books", filter: 'all', icon: 'books' },
+      { label: 'Comics', filter: 'all', icon: 'bookmark' },
+      { label: 'Self-Help', filter: 'all', icon: 'books' },
+      { label: 'Business', filter: 'all', icon: 'blue-book' },
+      { label: 'Exam Prep', filter: 'all', icon: 'pencil' }
+    ]
+  },
+  Sports: {
+    icon: 'soccer',
+    subs: [
+      { label: 'Fitness Equipment', filter: 'all', icon: 'sports-medal' },
+      { label: 'Cricket', filter: 'all', icon: 'cricket' },
+      { label: 'Football', filter: 'all', icon: 'football' },
+      { label: 'Cycling', filter: 'all', icon: 'bicycle' },
+      { label: 'Running', filter: 'all', icon: 'running-shoe' },
+      { label: 'Yoga', filter: 'all', icon: 'lotus' },
+      { label: 'Outdoor & Camping', filter: 'all', icon: 'tent' },
+      { label: 'Sportswear', filter: 'all', icon: 'running-shirt' }
+    ]
+  },
+  More: {
+    icon: 'cart',
+    subs: [
+      { label: 'Grocery', filter: 'Home & Kitchen', icon: 'pot' },
+      { label: 'Pet Supplies', filter: 'all', icon: 'dog' },
+      { label: 'Automotive', filter: 'all', icon: 'automobile' },
+      { label: 'Baby Care', filter: 'all', icon: 'baby-bottle' },
+      { label: 'Office Supplies', filter: 'all', icon: 'pencil' },
+      { label: 'Health Devices', filter: 'all', icon: 'stethoscope' },
+      { label: 'Musical Instruments', filter: 'all', icon: 'guitar' },
+      { label: 'Garden & Outdoor', filter: 'all', icon: 'garden' }
+    ]
+  }
+};

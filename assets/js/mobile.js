@@ -14,12 +14,203 @@
   const mobileCartBadge = document.getElementById('mobileCartBadge');
   const mobileWishlistBadge = document.getElementById('mobileWishlistBadge');
   const heroCarousel = document.getElementById('heroCarousel');
+  const categoriesScreen = document.getElementById('mobileCategoriesScreen');
+  const categoryRail = document.getElementById('mcatRail');
+  const categoryPanel = document.getElementById('mcatPanel');
+  const categoryCloseBtn = document.getElementById('mcatCloseBtn');
+  let activeCategoryIndex = 0;
+  let categoryTrigger = null;
 
   let manualActiveUntil = 0;
   let scrollFrame = null;
 
   function isMobile() {
     return mobileMedia.matches;
+  }
+
+  // -----------------------------------------------------------------------
+  // All Categories screen: image rail + subcategory grid
+  // -----------------------------------------------------------------------
+  function escapeHtml(value) {
+    return String(value).replace(/[&<>"']/g, function (character) {
+      return {
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#39;'
+      }[character];
+    });
+  }
+
+  function categoryMenuData() {
+    if (typeof CATEGORIES === 'undefined' || typeof CATEGORY_MENU === 'undefined') return [];
+    return CATEGORIES.map(function (cat) {
+      const meta = CATEGORY_MENU[cat.name] || {};
+      return {
+        name: cat.name,
+        icon: meta.icon || 'package',
+        subs: meta.subs || []
+      };
+    });
+  }
+
+  function categoryIconPath(icon) {
+    return 'assets/images/categories/' + icon + '.png';
+  }
+
+  function renderCategoryRail(menu) {
+    if (!categoryRail) return;
+    categoryRail.innerHTML = menu.map(function (cat, index) {
+      const isActive = index === activeCategoryIndex;
+      return (
+        '<button type="button" class="mcat-rail-btn' + (isActive ? ' active' : '') + '"' +
+        ' data-index="' + index + '" aria-pressed="' + (isActive ? 'true' : 'false') + '">' +
+        '<span class="mcat-rail-img"><img src="' + categoryIconPath(cat.icon) + '" alt="" loading="lazy" decoding="async" /></span>' +
+        '<span>' + escapeHtml(cat.name) + '</span>' +
+        '</button>'
+      );
+    }).join('');
+  }
+
+  function renderCategoryPanel(menu) {
+    if (!categoryPanel) return;
+    const active = menu[activeCategoryIndex];
+    if (!active) {
+      categoryPanel.innerHTML = '';
+      return;
+    }
+    categoryPanel.innerHTML =
+      '<h3 class="mcat-title">' + escapeHtml(active.name) + '</h3>' +
+      '<div class="mcat-grid">' +
+      active.subs.map(function (sub) {
+        return (
+          '<button type="button" class="mcat-sub" data-filter="' + escapeHtml(sub.filter) + '"' +
+          ' data-label="' + escapeHtml(sub.label) + '">' +
+          '<span class="mcat-sub-img"><img src="' + categoryIconPath(sub.icon) + '" alt="" loading="lazy" decoding="async" /></span>' +
+          '<span class="mcat-sub-label">' + escapeHtml(sub.label) + '</span>' +
+          '</button>'
+        );
+      }).join('') +
+      '</div>';
+  }
+
+  function setActiveCategory(index) {
+    const menu = categoryMenuData();
+    if (!menu.length) return;
+    activeCategoryIndex = Math.max(0, Math.min(index, menu.length - 1));
+    if (categoryRail) {
+      categoryRail.querySelectorAll('.mcat-rail-btn').forEach(function (btn, btnIndex) {
+        const isActive = btnIndex === activeCategoryIndex;
+        btn.classList.toggle('active', isActive);
+        btn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+      });
+      const activeBtn = categoryRail.querySelector('.mcat-rail-btn.active');
+      if (activeBtn && activeBtn.scrollIntoView) {
+        activeBtn.scrollIntoView({ block: 'nearest' });
+      }
+    }
+    renderCategoryPanel(menu);
+  }
+
+  function renderMobileCategories() {
+    const menu = categoryMenuData();
+    if (!menu.length) return;
+    renderCategoryRail(menu);
+    renderCategoryPanel(menu);
+  }
+
+  function openMobileCategories(trigger) {
+    categoryTrigger = trigger && trigger.focus ? trigger : null;
+
+    if (!categoriesScreen || !isMobile()) {
+      if (typeof scrollToSection === 'function') scrollToSection('categories');
+      return;
+    }
+
+    if (typeof closeAllOverlays === 'function') closeAllOverlays();
+    renderMobileCategories();
+    setActiveCategory(activeCategoryIndex);
+    categoriesScreen.classList.add('open');
+    categoriesScreen.setAttribute('aria-hidden', 'false');
+    if (backdrop) backdrop.classList.add('open');
+    setActiveTab('categories');
+    syncScrollLock();
+
+    window.setTimeout(function () {
+      if (categoryCloseBtn) categoryCloseBtn.focus();
+    }, 50);
+  }
+
+  function closeMobileCategories() {
+    if (!categoriesScreen) return;
+    categoriesScreen.classList.remove('open');
+    categoriesScreen.setAttribute('aria-hidden', 'true');
+    if (backdrop) backdrop.classList.remove('open');
+    syncScrollLock();
+    const categoriesTab = tabbar ? tabbar.querySelector('.mobile-tab[data-tab="categories"]') : null;
+    const focusTarget = categoryTrigger && document.contains(categoryTrigger) ? categoryTrigger : categoriesTab;
+    categoryTrigger = null;
+    if (focusTarget) focusTarget.focus();
+    updateActiveFromScroll();
+  }
+
+  window.openMobileCategories = openMobileCategories;
+  window.closeMobileCategories = closeMobileCategories;
+
+  if (categoryRail) {
+    categoryRail.addEventListener('click', function (event) {
+      const btn = event.target.closest('.mcat-rail-btn');
+      if (!btn) return;
+      const index = Number(btn.dataset.index);
+      if (!Number.isNaN(index)) setActiveCategory(index);
+    });
+  }
+
+  if (categoryPanel) {
+    categoryPanel.addEventListener('click', function (event) {
+      const btn = event.target.closest('.mcat-sub');
+      if (!btn) return;
+      const filter = btn.dataset.filter || 'all';
+      const label = btn.dataset.label || 'products';
+      closeMobileCategories();
+      if (typeof setDealFilter === 'function') setDealFilter(filter);
+      if (typeof scrollToSection === 'function') scrollToSection('deals');
+      setActiveTab('deals');
+      manualActiveUntil = Date.now() + 1400;
+      if (typeof showToast === 'function') showToast('Browsing ' + label);
+    });
+  }
+
+  if (categoryCloseBtn) {
+    categoryCloseBtn.addEventListener('click', closeMobileCategories);
+  }
+
+  // Top-nav "All Categories" opens the same full-screen category browser on phones.
+  document.addEventListener('click', function (event) {
+    if (!isMobile()) return;
+    const target = event.target;
+    if (!target || typeof target.closest !== 'function') return;
+    const trigger = target.closest('#megaMenuBtn');
+    if (!trigger) return;
+    event.preventDefault();
+    event.stopPropagation();
+    openMobileCategories(trigger);
+  }, true);
+
+  document.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape' && categoriesScreen && categoriesScreen.classList.contains('open')) {
+      closeMobileCategories();
+    }
+  });
+
+  // Set the initial rail/panel content once the catalogue data is available.
+  if (typeof document !== 'undefined') {
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', renderMobileCategories);
+    } else {
+      renderMobileCategories();
+    }
   }
 
   // -----------------------------------------------------------------------
@@ -127,10 +318,18 @@
     }).observe(backdrop, { attributes: true, attributeFilter: ['class'] });
   }
 
+  function handleViewportChange() {
+    if (!isMobile() && categoriesScreen && categoriesScreen.classList.contains('open')) {
+      closeMobileCategories();
+      return;
+    }
+    syncScrollLock();
+  }
+
   if (mobileMedia.addEventListener) {
-    mobileMedia.addEventListener('change', syncScrollLock);
+    mobileMedia.addEventListener('change', handleViewportChange);
   } else if (mobileMedia.addListener) {
-    mobileMedia.addListener(syncScrollLock);
+    mobileMedia.addListener(handleViewportChange);
   }
 
   // -----------------------------------------------------------------------

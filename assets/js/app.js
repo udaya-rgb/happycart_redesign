@@ -1000,6 +1000,11 @@ function closeAllOverlays() {
   quickViewModal.classList.remove('open');
   pincodeModal.classList.remove('open');
   document.getElementById('compareModal').classList.remove('open');
+  const mobileCategoriesScreen = document.getElementById('mobileCategoriesScreen');
+  if (mobileCategoriesScreen) {
+    mobileCategoriesScreen.classList.remove('open');
+    mobileCategoriesScreen.setAttribute('aria-hidden', 'true');
+  }
   closePopovers();
 }
 

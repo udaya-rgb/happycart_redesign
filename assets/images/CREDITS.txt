@@ -37,3 +37,9 @@ Sony logo sourced from Wikimedia Commons (File:Sony logo.svg).
 Samsung logo sourced from Wikimedia Commons (File:Samsung wordmark.svg).
 Logitech logo sourced from Wikimedia Commons (File:Logitech Logo 2012.svg).
 Brand names and logos are trademarks of their respective owners.
+
+Category icons
+==============
+Mobile category icons in assets/images/categories are the 3D assets from
+Microsoft Fluent Emoji (https://github.com/microsoft/fluentui-emoji),
+licensed under the MIT License. Downloaded from the project's public CDN.

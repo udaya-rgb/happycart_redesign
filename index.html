@@ -937,6 +937,30 @@
     </form>
   </div>
 
+  <!-- Mobile-Only All Categories Screen -->
+  <section
+    class="mobile-categories-screen"
+    id="mobileCategoriesScreen"
+    role="dialog"
+    aria-modal="true"
+    aria-label="All Categories"
+    aria-hidden="true"
+  >
+    <div class="mcat-header">
+      <h2 class="mcat-header-title">All Categories</h2>
+      <button type="button" class="mcat-close" id="mcatCloseBtn" aria-label="Close categories">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true">
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+    <div class="mcat-body">
+      <nav class="mcat-rail" id="mcatRail" aria-label="Categories"></nav>
+      <div class="mcat-panel" id="mcatPanel"></div>
+    </div>
+  </section>
+
   <!-- Toast Container -->
   <div class="toast-container" id="toastContainer"></div>
 
@@ -953,7 +977,7 @@
       <span class="mobile-tab-label">Home</span>
     </button>
 
-    <button type="button" class="mobile-tab" data-tab="categories" onclick="scrollToSection('categories')" aria-label="Categories">
+    <button type="button" class="mobile-tab" data-tab="categories" onclick="window.openMobileCategories ? openMobileCategories(this) : scrollToSection('categories')" aria-label="Categories">
       <span class="mobile-tab-icon">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <rect x="3" y="3" width="7" height="7" rx="2"></rect>
