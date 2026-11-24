@@ -1243,19 +1243,66 @@
     padding: 26px 0 calc(20px + env(safe-area-inset-bottom, 0px));
   }
 
-  .footer-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 20px 16px;
-    margin-bottom: 22px;
+  .footer-brand-band {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    padding: 20px 18px;
+    margin-bottom: 24px;
+    border-radius: 18px;
   }
 
-  .footer-grid > div:first-child {
-    grid-column: 1 / -1;
+  .footer-brand-logo {
+    margin-bottom: 8px;
+  }
+
+  .footer-brand-logo .brand-name {
+    font-size: 1.25rem;
+  }
+
+  .footer-tagline {
+    font-size: 0.96rem;
+    margin-bottom: 6px;
+  }
+
+  .footer-intro {
+    font-size: 0.8rem;
+    line-height: 1.6;
+    margin-bottom: 10px;
+  }
+
+  .footer-contact {
+    font-size: 0.74rem;
+    gap: 6px 14px;
+  }
+
+  .footer-highlights-wrap {
+    padding: 16px;
+    border-radius: 14px;
+  }
+
+  .footer-highlights {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .footer-highlights li {
+    font-size: 0.76rem;
+  }
+
+  .footer-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px 14px;
+    margin-bottom: 22px;
   }
 
   .footer-col h5 {
     margin-bottom: 8px;
-    font-size: 0.82rem;
+    font-size: 0.72rem;
+  }
+
+  .footer-section-head h5 {
+    margin-bottom: 0;
+    font-size: 0.98rem;
   }
 
   .footer-col ul {
@@ -1263,14 +1310,157 @@
   }
 
   .footer-col a {
-    font-size: 0.8rem;
+    font-size: 0.76rem;
+  }
+
+  .footer-grid .footer-col:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .footer-grid .footer-col:last-child ul {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 6px 16px;
+  }
+
+  .footer-grid .footer-col:last-child .app-badges {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .footer-grid .footer-col:last-child .store-badge {
+    width: auto;
+    min-width: 150px;
+  }
+
+  .footer-app-block {
+    margin-top: 12px;
+    padding-top: 10px;
+  }
+
+  .footer-app-label {
+    font-size: 0.64rem;
+    margin-bottom: 6px;
+  }
+
+  .app-badges {
+    gap: 6px;
+  }
+
+  .store-badge {
+    padding: 6px 8px;
+    gap: 7px;
+  }
+
+  .store-badge svg {
+    width: 17px;
+    height: 17px;
+  }
+
+  .store-badge strong {
+    font-size: 0.72rem;
+  }
+
+  .store-badge small {
+    font-size: 0.5rem;
+  }
+
+  .footer-searched,
+  .footer-trending,
+  .footer-explore {
+    padding: 22px 0;
+  }
+
+  .footer-section-head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    margin-bottom: 12px;
+  }
+
+  .footer-section-title {
+    gap: 10px;
+  }
+
+  .footer-section-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 10px;
+  }
+
+  .footer-section-icon svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .footer-section-note {
+    font-size: 0.72rem;
+  }
+
+  .footer-chip-cloud {
+    gap: 6px;
+  }
+
+  .footer-chip {
+    padding: 6px 10px;
+    font-size: 0.69rem;
+  }
+
+  .footer-seo-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .footer-seo-group {
+    padding: 12px 14px;
+    border-radius: 14px;
+  }
+
+  .footer-seo-group summary {
+    font-size: 0.78rem;
+  }
+
+  .footer-seo-group summary::before {
+    width: 26px;
+    height: 26px;
+    background-size: 18px 18px;
+  }
+
+  .footer-seo-links {
+    line-height: 1.8;
+  }
+
+  .footer-seo-links a {
+    font-size: 0.7rem;
   }
 
   .footer-bottom {
     flex-direction: column;
     align-items: flex-start;
-    gap: 10px;
+    gap: 12px;
     padding-top: 14px;
+  }
+
+  .footer-bottom-left {
+    gap: 8px 12px;
+  }
+
+  .footer-copyright {
+    font-size: 0.72rem;
+  }
+
+  .footer-socials {
+    gap: 6px;
+  }
+
+  .footer-social {
+    width: 30px;
+    height: 30px;
+  }
+
+  .footer-social svg {
+    width: 14px;
+    height: 14px;
   }
 
   .payment-badges {
@@ -1279,14 +1469,8 @@
 
   .back-to-top-btn {
     margin-left: auto;
-  }
-
-  .app-badges {
-    gap: 6px;
-  }
-
-  .store-badge {
-    padding: 6px 10px;
+    width: 32px;
+    height: 32px;
   }
 
   /* ------------------------------------------------------------------------

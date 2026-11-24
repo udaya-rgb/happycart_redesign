@@ -1049,6 +1049,37 @@ document.addEventListener('click', (e) => {
 });
 
 // =========================================================================
+// FOOTER SEARCH, CATEGORY LINKS & RESPONSIVE GROUPS
+// =========================================================================
+function browseFooterCategory(label, filter) {
+  setDealFilter(filter || 'all');
+  scrollToSection('deals');
+  showToast(`Browsing ${label}`);
+}
+
+document.addEventListener('click', (event) => {
+  const target = event.target;
+  if (!target || typeof target.closest !== 'function') return;
+
+  const searchChip = target.closest('[data-search-term]');
+  if (searchChip) {
+    event.preventDefault();
+    quickSearch(searchChip.dataset.searchTerm);
+    return;
+  }
+
+  const footerLink = target.closest('[data-footer-label]');
+  if (footerLink) {
+    event.preventDefault();
+    const group = footerLink.closest('[data-footer-filter]');
+    browseFooterCategory(
+      footerLink.dataset.footerLabel,
+      group ? group.dataset.footerFilter : 'all'
+    );
+  }
+});
+
+// =========================================================================
 // J. COUNTDOWN TIMER, TOASTS & UTILITIES
 // =========================================================================
 let remainingSeconds = 4 * 3600 + 28 * 60 + 19;

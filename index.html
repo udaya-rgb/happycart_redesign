@@ -754,73 +754,577 @@
        ======================================================================== -->
   <footer class="site-footer" id="footer">
     <div class="container">
-      <div class="footer-grid">
-        <div>
-          <div class="brand-logo" style="margin-bottom: 12px;">
-            <div class="brand-icon-wrap" style="width: 34px; height: 34px;">
+      <!-- Brand band -->
+      <div class="footer-brand-band">
+        <div class="footer-brand-copy">
+          <div class="brand-logo footer-brand-logo">
+            <div class="brand-icon-wrap footer-brand-icon">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="9" cy="21" r="1"></circle>
                 <circle cx="20" cy="21" r="1"></circle>
                 <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
               </svg>
             </div>
-            <span class="brand-name" style="font-size: 1.28rem;">HappyCart</span>
+            <span class="brand-name">HappyCart</span>
           </div>
-          <p style="max-width: 300px; line-height: 1.6;">
-            India's next-generation marketplace engineered for lightning-fast delivery, verified electronics, and effortless shopping.
+          <p class="footer-tagline">Shop Smart. Save More. Live Better.</p>
+          <p class="footer-intro">
+            Welcome to HappyCart, India's smart online shopping destination for electronics, appliances, fashion, and everyday essentials at unbeatable prices. Discover the latest gadgets and trusted products with fast, reliable delivery across India.
           </p>
-          <p style="font-size: 0.78rem; margin-top: 8px; color: var(--text-muted);">
-            📍 Tower B, Olympia Tech Park, Guindy, Chennai 600032 · ☎️ 1800-120-CART
+          <p class="footer-contact">
+            <span class="footer-contact-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              Tower B, Olympia Tech Park, Guindy, Chennai 600032
+            </span>
+            <span class="footer-contact-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.08 4.18 2 2 0 0 1 4.06 2h3a2 2 0 0 1 2 1.72c.12.81.3 1.6.54 2.36a2 2 0 0 1-.45 2.11L8 9.36a16 16 0 0 0 6.64 6.64l1.17-1.17a2 2 0 0 1 2.11-.45c.76.24 1.55.42 2.36.54A2 2 0 0 1 22 16.92z"></path></svg>
+              1800-120-CART
+            </span>
           </p>
-          <div class="app-badges">
-            <button class="store-badge" onclick="showToast('Opening HappyCart on Google Play Store')">▶ Google Play</button>
-            <button class="store-badge" onclick="showToast('Opening HappyCart on Apple App Store')"> App Store</button>
-          </div>
         </div>
 
-        <div class="footer-col">
-          <h5>Get to Know Us</h5>
-          <ul>
-            <li><a href="#deals">About HappyCart</a></li>
-            <li><a href="#deals">Careers &amp; Culture</a></li>
-            <li><a href="#deals">HappyCart Science</a></li>
-            <li><a href="#deals">Press Releases</a></li>
+        <div class="footer-highlights-wrap">
+          <h5 class="footer-highlights-title">Why Choose HappyCart?</h5>
+          <ul class="footer-highlights">
+            <li>Wide range of products across categories</li>
+            <li>Affordable prices and exciting offers</li>
+            <li>Easy navigation and smooth checkout</li>
+            <li>Trusted sellers and quality products</li>
+            <li>Fast and reliable delivery</li>
+            <li>Safe, secure, and user-friendly shopping</li>
           </ul>
-        </div>
-
-        <div class="footer-col">
-          <h5>Make Money with Us</h5>
-          <ul>
-            <li><a href="#deals">Sell on HappyCart</a></li>
-            <li><a href="#deals">HappyCart Global Selling</a></li>
-            <li><a href="#deals">Become an Affiliate</a></li>
-            <li><a href="#deals">Advertise Your Products</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h5>Our Services</h5>
-          <ul>
-            <li><a href="#offersForYou">Coupons &amp; Bank Offers</a></li>
-            <li><a href="#techWishes">HappyCart Care+ Warranty</a></li>
-            <li><a href="#discoveryQuads">Same-Day Express Delivery</a></li>
-            <li><a href="#featuredBrands">Official Brand Stores</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h5>My Account &amp; Help</h5>
-          <ul>
-            <li><a href="#deals">Your Account &amp; Orders</a></li>
-            <li><a href="#browsingHistorySection">Browsing History</a></li>
-            <li><a href="#deals">100% Purchase Protection</a></li>
-            <li><a href="#footer">24/7 Customer Support</a></li>
-          </ul>
+          <p class="footer-highlights-note">HappyCart connects customers with trusted sellers across India, supporting local businesses with quality and reliability.</p>
         </div>
       </div>
 
+      <!-- Main link columns -->
+      <div class="footer-grid">
+        <nav class="footer-col" aria-label="Shop">
+          <h5>Shop</h5>
+          <ul>
+            <li><a href="#" onclick="window.scrollTo({top:0, behavior:'smooth'}); return false;">Home</a></li>
+            <li><a href="#categories" onclick="window.openMobileCategories ? openMobileCategories() : scrollToSection('categories'); return false;">All Categories</a></li>
+            <li><a href="#deals" onclick="setDealFilter('all'); scrollToSection('deals'); return false;">New Arrivals</a></li>
+            <li><a href="#deals" onclick="setDealFilter('under5k'); scrollToSection('deals'); return false;">Best Sellers</a></li>
+            <li><a href="#deals" onclick="setDealFilter('all'); scrollToSection('deals'); return false;">Offers</a></li>
+            <li><a href="#footer" onclick="showToast('Gift Cards are coming soon!'); return false;">Gift Cards</a></li>
+            <li><a href="#searchWrapper" onclick="document.getElementById('searchInput').focus(); window.scrollTo({top:0, behavior:'smooth'}); return false;">Search</a></li>
+          </ul>
+        </nav>
+
+        <nav class="footer-col" aria-label="Shop by Category">
+          <h5>Shop by Category</h5>
+          <ul>
+            <li><a href="#deals" data-footer-label="Mobiles &amp; Tablets" data-footer-filter="Computing">Mobiles &amp; Tablets</a></li>
+            <li><a href="#deals" data-footer-label="Audio &amp; Smart Gadgets" data-footer-filter="Audio &amp; Wearables">Audio &amp; Smart Gadgets</a></li>
+            <li><a href="#deals" data-footer-label="Cameras &amp; Photography" data-footer-filter="Cameras">Cameras &amp; Photography</a></li>
+            <li><a href="#deals" data-footer-label="Laptops &amp; Computing" data-footer-filter="Computing">Laptops &amp; Computing</a></li>
+            <li><a href="#deals" data-footer-label="Home Appliances" data-footer-filter="Home &amp; Kitchen">Home Appliances</a></li>
+            <li><a href="#deals" data-footer-label="Furniture" data-footer-filter="Home &amp; Kitchen">Furniture</a></li>
+            <li><a href="#categories" class="footer-link-arrow" onclick="window.openMobileCategories ? openMobileCategories() : scrollToSection('categories'); return false;">View All Categories →</a></li>
+          </ul>
+        </nav>
+
+        <nav class="footer-col" aria-label="My Account">
+          <h5>My Account</h5>
+          <ul>
+            <li><a href="#footer" onclick="showToast('Your account dashboard is ready'); return false;">My Account</a></li>
+            <li><a href="#footer" onclick="showToast('Your orders are synced and up to date'); return false;">My Orders</a></li>
+            <li><a href="#footer" onclick="openCartDrawer(); return false;">My Cart</a></li>
+            <li><a href="#deals" onclick="filterByWishlist(); return false;">My Wishlist</a></li>
+            <li><a href="#deals" onclick="filterByWishlist(); return false;">Saved Items</a></li>
+            <li><a href="#footer" onclick="openPincodeModal(); return false;">My Addresses</a></li>
+            <li><a href="#footer" onclick="showToast('Secure payments: UPI, cards, wallets &amp; net banking'); return false;">Payment Methods</a></li>
+            <li><a href="#footer" onclick="showToast('Track Order: Enter your Order ID in Account &amp; Orders'); return false;">Track Order</a></li>
+          </ul>
+        </nav>
+
+        <nav class="footer-col" aria-label="Customer Support">
+          <h5>Customer Support</h5>
+          <ul>
+            <li><a href="#footer" onclick="showToast('Help Center: browse FAQs and shopping guides'); return false;">Help Center</a></li>
+            <li><a href="#footer" onclick="showToast('FAQ: quick answers to common questions'); return false;">FAQ's</a></li>
+            <li><a href="#footer" onclick="showToast('Shipping Information: delivery timelines and charges'); return false;">Shipping Information</a></li>
+            <li><a href="#footer" onclick="showToast('Returns &amp; Refunds: 7-day easy returns'); return false;">Returns &amp; Refunds</a></li>
+            <li><a href="#footer" onclick="showToast('Cancellation Policy: cancel before dispatch'); return false;">Cancellation Policy</a></li>
+            <li><a href="#footer" onclick="showToast('Contact Us: 24/7 support at 1800-120-CART'); return false;">Contact Us</a></li>
+            <li><a href="#footer" onclick="showToast('Bulk Orders: dedicated business support'); return false;">Bulk Orders</a></li>
+            <li><a href="#footer" onclick="showToast('Report an Issue: we are here to help'); return false;">Report an Issue</a></li>
+          </ul>
+        </nav>
+
+        <nav class="footer-col" aria-label="About HappyCart">
+          <h5>About HappyCart</h5>
+          <ul>
+            <li><a href="#footer" onclick="showToast('About HappyCart: our story and mission'); return false;">About Us</a></li>
+            <li><a href="#footer" onclick="showToast('Our Story: built for smart, simple shopping'); return false;">Our Story</a></li>
+            <li><a href="#footer" onclick="showToast('Careers: join the HappyCart team'); return false;">Careers</a></li>
+            <li><a href="#footer" onclick="showToast('Blog: shopping tips, trends and guides'); return false;">Blog</a></li>
+            <li><a href="#footer" onclick="showToast('Press &amp; Media: newsroom and brand assets'); return false;">Press &amp; Media</a></li>
+            <li><a href="#footer" onclick="showToast('Sustainability: responsible shopping for a better tomorrow'); return false;">Sustainability</a></li>
+            <li><a href="#footer" onclick="showToast('Seller Portal: Zero commission for your first 30 days!'); return false;">Sell on HappyCart</a></li>
+          </ul>
+          <div class="footer-app-block">
+            <span class="footer-app-label">Download Our App</span>
+            <div class="app-badges">
+              <button type="button" class="store-badge" onclick="showToast('Opening HappyCart on Google Play Store')">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22.018 13.298l-3.919 2.218-3.515-3.493 3.543-3.521 3.891 2.202a1.49 1.49 0 0 1 0 2.594zM1.337.924a1.486 1.486 0 0 0-.112.568v21.017c0 .217.045.419.124.6l11.155-11.087L1.337.924zm12.207 10.065l3.258-3.238L3.45.195a1.466 1.466 0 0 0-.946-.179l11.04 10.973zm0 2.067l-11 10.933c.298.036.612-.016.906-.183l13.324-7.54-3.23-3.21z"/></svg>
+                <span><small>GET IT ON</small><strong>Google Play</strong></span>
+              </button>
+              <button type="button" class="store-badge" onclick="showToast('Opening HappyCart on Apple App Store')">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg>
+                <span><small>Download on the</small><strong>App Store</strong></span>
+              </button>
+            </div>
+          </div>
+        </nav>
+      </div>
+
+      <!-- Most searched -->
+      <section class="footer-searched" aria-labelledby="footerSearchedTitle">
+        <div class="footer-section-head">
+          <div class="footer-section-title">
+            <span class="footer-section-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            </span>
+            <h5 id="footerSearchedTitle">Most Searched</h5>
+          </div>
+          <p class="footer-section-note">Popular searches shoppers are exploring right now.</p>
+        </div>
+        <div class="footer-chip-cloud">
+          <button type="button" class="footer-chip" data-search-term="iPhone 17e">iPhone 17e</button>
+          <button type="button" class="footer-chip" data-search-term="Samsung Galaxy A57">Samsung Galaxy A57</button>
+          <button type="button" class="footer-chip" data-search-term="REDMI 15A">REDMI 15A</button>
+          <button type="button" class="footer-chip" data-search-term="POCO C85">POCO C85</button>
+          <button type="button" class="footer-chip" data-search-term="POCO X8 Pro">POCO X8 Pro</button>
+          <button type="button" class="footer-chip" data-search-term="OPPO F33">OPPO F33</button>
+          <button type="button" class="footer-chip" data-search-term="vivo V70 FE">vivo V70 FE</button>
+          <button type="button" class="footer-chip" data-search-term="Ai+ Nova 2">Ai+ Nova 2</button>
+          <button type="button" class="footer-chip" data-search-term="Smartwatches">Smartwatches</button>
+          <button type="button" class="footer-chip" data-search-term="Boat Earbuds">Boat Earbuds</button>
+          <button type="button" class="footer-chip" data-search-term="Earphones">Earphones</button>
+          <button type="button" class="footer-chip" data-search-term="Air Pods">Air Pods</button>
+          <button type="button" class="footer-chip" data-search-term="Premium Laptops">Premium Laptops</button>
+          <button type="button" class="footer-chip" data-search-term="Laptop Store">Laptop Store</button>
+          <button type="button" class="footer-chip" data-search-term="Mixer Juicer Grinder">Mixer Juicer Grinder</button>
+          <button type="button" class="footer-chip" data-search-term="Lumio Projectors">Lumio Projectors</button>
+          <button type="button" class="footer-chip" data-search-term="Urbn Power Banks">Urbn Power Banks</button>
+          <button type="button" class="footer-chip" data-search-term="GoBoult Wireless Earphones">GoBoult Wireless Earphones</button>
+          <button type="button" class="footer-chip" data-search-term="Bose Sound bars">Bose Sound bars</button>
+          <button type="button" class="footer-chip" data-search-term="Campus Shoes">Campus Shoes</button>
+          <button type="button" class="footer-chip" data-search-term="Helmets">Helmets</button>
+          <button type="button" class="footer-chip" data-search-term="Men's Watches">Men's Watches</button>
+          <button type="button" class="footer-chip" data-search-term="Women's Watches">Women's Watches</button>
+          <button type="button" class="footer-chip" data-search-term="Teddy Bears">Teddy Bears</button>
+        </div>
+      </section>
+
+      <!-- Explore categories -->
+      <section class="footer-explore" aria-labelledby="footerExploreTitle">
+        <div class="footer-section-head">
+          <div class="footer-section-title">
+            <span class="footer-section-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="2"></rect><rect x="14" y="3" width="7" height="7" rx="2"></rect><rect x="3" y="14" width="7" height="7" rx="2"></rect><rect x="14" y="14" width="7" height="7" rx="2"></rect></svg>
+            </span>
+            <h5 id="footerExploreTitle">Explore HappyCart</h5>
+          </div>
+          <p class="footer-section-note">Browse all categories and find exactly what you need.</p>
+        </div>
+        <div class="footer-seo-grid">
+          <details class="footer-seo-group" data-icon="mobile" data-footer-filter="Computing">
+            <summary>Mobiles &amp; Tablets</summary>
+            <div class="footer-seo-links">
+              <a href="#deals" data-footer-label="Smartphones">Smartphones</a>
+              <a href="#deals" data-footer-label="5G Mobiles">5G Mobiles</a>
+              <a href="#deals" data-footer-label="Budget Phones">Budget Phones</a>
+              <a href="#deals" data-footer-label="Flagship Devices">Flagship Devices</a>
+              <a href="#deals" data-footer-label="Android Phones">Android Phones</a>
+              <a href="#deals" data-footer-label="iPhones">iPhones</a>
+              <a href="#deals" data-footer-label="Feature Phones">Feature Phones</a>
+              <a href="#deals" data-footer-label="Gaming Mobiles">Gaming Mobiles</a>
+              <a href="#deals" data-footer-label="Camera Phones">Camera Phones</a>
+              <a href="#deals" data-footer-label="Refurbished Mobiles">Refurbished Mobiles</a>
+              <a href="#deals" data-footer-label="4G Mobiles">4G Mobiles</a>
+              <a href="#deals" data-footer-label="Nokia Phones">Nokia Phones</a>
+              <a href="#deals" data-footer-label="Samsung Mobiles">Samsung Mobiles</a>
+              <a href="#deals" data-footer-label="Oppo Mobiles">Oppo Mobiles</a>
+              <a href="#deals" data-footer-label="Apple Phones">Apple Phones</a>
+              <a href="#deals" data-footer-label="Realme Mobiles">Realme Mobiles</a>
+              <a href="#deals" data-footer-label="Nothing Phones">Nothing Phones</a>
+              <a href="#deals" data-footer-label="OnePlus Mobiles">OnePlus Mobiles</a>
+              <a href="#deals" data-footer-label="Blackberry Phones">Blackberry Phones</a>
+              <a href="#deals" data-footer-label="POCO Mobiles">POCO Mobiles</a>
+              <a href="#deals" data-footer-label="Feature Mobile Phones">Feature Mobile Phones</a>
+              <a href="#deals" data-footer-label="Redmi Phones">Redmi Phones</a>
+              <a href="#deals" data-footer-label="Motorola Mobiles">Motorola Mobiles</a>
+              <a href="#deals" data-footer-label="Mobile Phones Under 10000">Mobile Phones Under 10000</a>
+              <a href="#deals" data-footer-label="Mobile Phones Under 15000">Mobile Phones Under 15000</a>
+              <a href="#deals" data-footer-label="Mobile Phones Under 20000">Mobile Phones Under 20000</a>
+              <a href="#deals" data-footer-label="Mobile Phones Under 25000">Mobile Phones Under 25000</a>
+              <a href="#deals" data-footer-label="256 GB Mobiles">256 GB Mobiles</a>
+              <a href="#deals" data-footer-label="512 GB Mobiles">512 GB Mobiles</a>
+              <a href="#deals" data-footer-label="5.5 Inch Mobiles">5.5 Inch Mobiles</a>
+              <a href="#deals" data-footer-label="Android Tablets">Android Tablets</a>
+              <a href="#deals" data-footer-label="iPads">iPads</a>
+              <a href="#deals" data-footer-label="Kids Tablets">Kids Tablets</a>
+              <a href="#deals" data-footer-label="Accessories">Accessories</a>
+            </div>
+          </details>
+
+          <details class="footer-seo-group" data-icon="headphone" data-footer-filter="Audio &amp; Wearables">
+            <summary>Audio &amp; Smart Gadgets</summary>
+            <div class="footer-seo-links">
+              <a href="#deals" data-footer-label="Wireless Earbuds">Wireless Earbuds</a>
+              <a href="#deals" data-footer-label="Bluetooth Headphones">Bluetooth Headphones</a>
+              <a href="#deals" data-footer-label="Speakers">Speakers</a>
+              <a href="#deals" data-footer-label="Soundbars">Soundbars</a>
+              <a href="#deals" data-footer-label="Smart Watches">Smart Watches</a>
+              <a href="#deals" data-footer-label="Fitness Bands">Fitness Bands</a>
+              <a href="#deals" data-footer-label="VR Headsets">VR Headsets</a>
+              <a href="#deals" data-footer-label="Mobile Projectors">Mobile Projectors</a>
+              <a href="#deals" data-footer-label="Smart Trackers">Smart Trackers</a>
+              <a href="#deals" data-footer-label="Gaming Accessories">Gaming Accessories</a>
+            </div>
+          </details>
+
+          <details class="footer-seo-group" data-icon="camera" data-footer-filter="Cameras">
+            <summary>Cameras &amp; Photography</summary>
+            <div class="footer-seo-links">
+              <a href="#deals" data-footer-label="DSLR Cameras">DSLR Cameras</a>
+              <a href="#deals" data-footer-label="Mirrorless Cameras">Mirrorless Cameras</a>
+              <a href="#deals" data-footer-label="Action Cameras">Action Cameras</a>
+              <a href="#deals" data-footer-label="Instant Cameras">Instant Cameras</a>
+              <a href="#deals" data-footer-label="Drones">Drones</a>
+              <a href="#deals" data-footer-label="Camera Lenses">Camera Lenses</a>
+              <a href="#deals" data-footer-label="Tripods">Tripods</a>
+              <a href="#deals" data-footer-label="Gimbals">Gimbals</a>
+              <a href="#deals" data-footer-label="Camera Accessories">Camera Accessories</a>
+            </div>
+          </details>
+
+          <details class="footer-seo-group" data-icon="laptop" data-footer-filter="Computing">
+            <summary>Laptops &amp; Computing</summary>
+            <div class="footer-seo-links">
+              <a href="#deals" data-footer-label="Gaming Laptops">Gaming Laptops</a>
+              <a href="#deals" data-footer-label="Business Laptops">Business Laptops</a>
+              <a href="#deals" data-footer-label="Student Laptops">Student Laptops</a>
+              <a href="#deals" data-footer-label="Ultrabooks">Ultrabooks</a>
+              <a href="#deals" data-footer-label="Budget Laptops">Budget Laptops</a>
+              <a href="#deals" data-footer-label="i5 &amp; i7 Laptops">i5 &amp; i7 Laptops</a>
+              <a href="#deals" data-footer-label="Desktop PCs">Desktop PCs</a>
+              <a href="#deals" data-footer-label="Monitors">Monitors</a>
+              <a href="#deals" data-footer-label="Keyboards">Keyboards</a>
+              <a href="#deals" data-footer-label="Mouse">Mouse</a>
+              <a href="#deals" data-footer-label="Storage Devices">Storage Devices</a>
+            </div>
+          </details>
+
+          <details class="footer-seo-group" data-icon="cooking" data-footer-filter="Home &amp; Kitchen">
+            <summary>Home Appliances</summary>
+            <div class="footer-seo-links">
+              <a href="#deals" data-footer-label="Smart TVs">Smart TVs</a>
+              <a href="#deals" data-footer-label="LED TVs">LED TVs</a>
+              <a href="#deals" data-footer-label="4K TVs">4K TVs</a>
+              <a href="#deals" data-footer-label="Android TVs">Android TVs</a>
+              <a href="#deals" data-footer-label="OLED TVs">OLED TVs</a>
+              <a href="#deals" data-footer-label="QLED TVs">QLED TVs</a>
+              <a href="#deals" data-footer-label="Air Conditioners">Air Conditioners</a>
+              <a href="#deals" data-footer-label="Refrigerators">Refrigerators</a>
+              <a href="#deals" data-footer-label="Washing Machines">Washing Machines</a>
+              <a href="#deals" data-footer-label="Microwave Ovens">Microwave Ovens</a>
+              <a href="#deals" data-footer-label="Air Fryers">Air Fryers</a>
+              <a href="#deals" data-footer-label="Water Purifiers">Water Purifiers</a>
+              <a href="#deals" data-footer-label="Kitchen Appliances">Kitchen Appliances</a>
+            </div>
+          </details>
+
+          <details class="footer-seo-group" data-icon="plug" data-footer-filter="Home &amp; Kitchen">
+            <summary>Large Appliances</summary>
+            <div class="footer-seo-links">
+              <a href="#deals" data-footer-label="Air Conditioners">Air Conditioners</a>
+              <a href="#deals" data-footer-label="Air Coolers">Air Coolers</a>
+              <a href="#deals" data-footer-label="Microwave Ovens">Microwave Ovens</a>
+              <a href="#deals" data-footer-label="Air Fryers">Air Fryers</a>
+              <a href="#deals" data-footer-label="Refrigerators">Refrigerators</a>
+              <a href="#deals" data-footer-label="Washing Machines">Washing Machines</a>
+              <a href="#deals" data-footer-label="Water Purifiers">Water Purifiers</a>
+              <a href="#deals" data-footer-label="Induction Stove">Induction Stove</a>
+              <a href="#deals" data-footer-label="Water Geyser">Water Geyser</a>
+              <a href="#deals" data-footer-label="Room Heaters">Room Heaters</a>
+              <a href="#deals" data-footer-label="1.5 Ton ACs">1.5 Ton ACs</a>
+              <a href="#deals" data-footer-label="Dish Washers">Dish Washers</a>
+              <a href="#deals" data-footer-label="Electric Cookers">Electric Cookers</a>
+            </div>
+          </details>
+
+          <details class="footer-seo-group" data-icon="chair" data-footer-filter="Home &amp; Kitchen">
+            <summary>Furniture</summary>
+            <div class="footer-seo-links">
+              <a href="#deals" data-footer-label="Furniture Store">Furniture Store</a>
+              <a href="#deals" data-footer-label="Beds">Beds</a>
+              <a href="#deals" data-footer-label="Dining Table Sets">Dining Table Sets</a>
+              <a href="#deals" data-footer-label="Wardrobes">Wardrobes</a>
+              <a href="#deals" data-footer-label="TV Units &amp; Cabinets">TV Units &amp; Cabinets</a>
+              <a href="#deals" data-footer-label="Office Chairs">Office Chairs</a>
+              <a href="#deals" data-footer-label="Study Tables">Study Tables</a>
+              <a href="#deals" data-footer-label="Sofa Sets">Sofa Sets</a>
+              <a href="#deals" data-footer-label="Mattress">Mattress</a>
+              <a href="#deals" data-footer-label="Sofa Beds">Sofa Beds</a>
+              <a href="#deals" data-footer-label="Shoe Racks">Shoe Racks</a>
+              <a href="#deals" data-footer-label="Dressing Tables">Dressing Tables</a>
+              <a href="#deals" data-footer-label="Home Temples">Home Temples</a>
+              <a href="#deals" data-footer-label="Kitchen Cabinets">Kitchen Cabinets</a>
+              <a href="#deals" data-footer-label="King Size Beds">King Size Beds</a>
+              <a href="#deals" data-footer-label="Queen Size Beds">Queen Size Beds</a>
+              <a href="#deals" data-footer-label="Office Furniture">Office Furniture</a>
+              <a href="#deals" data-footer-label="Kitchen Storage">Kitchen Storage</a>
+              <a href="#deals" data-footer-label="Home Décor">Home Décor</a>
+              <a href="#deals" data-footer-label="Lighting">Lighting</a>
+              <a href="#deals" data-footer-label="Curtains">Curtains</a>
+              <a href="#deals" data-footer-label="Furnishings">Furnishings</a>
+            </div>
+          </details>
+
+          <details class="footer-seo-group" data-icon="soccer" data-footer-filter="all">
+            <summary>Sports, Fitness &amp; Outdoor</summary>
+            <div class="footer-seo-links">
+              <a href="#deals" data-footer-label="Fitness Equipment">Fitness Equipment</a>
+              <a href="#deals" data-footer-label="Gym Accessories">Gym Accessories</a>
+              <a href="#deals" data-footer-label="Cycling Gear">Cycling Gear</a>
+              <a href="#deals" data-footer-label="Sports Equipment">Sports Equipment</a>
+              <a href="#deals" data-footer-label="Yoga Mats">Yoga Mats</a>
+              <a href="#deals" data-footer-label="Outdoor Games">Outdoor Games</a>
+              <a href="#deals" data-footer-label="Adventure Gear">Adventure Gear</a>
+            </div>
+          </details>
+
+          <details class="footer-seo-group" data-icon="bicycle" data-footer-filter="all">
+            <summary>Bicycles</summary>
+            <div class="footer-seo-links">
+              <a href="#deals" data-footer-label="E-Bikes">E-Bikes</a>
+              <a href="#deals" data-footer-label="Pedal Assist Bikes">Pedal Assist Bikes</a>
+              <a href="#deals" data-footer-label="Throttle E-Bikes">Throttle E-Bikes</a>
+              <a href="#deals" data-footer-label="Folding E-Bikes">Folding E-Bikes</a>
+              <a href="#deals" data-footer-label="Electric Mountain Bikes">Electric Mountain Bikes</a>
+              <a href="#deals" data-footer-label="Balance Bikes">Balance Bikes</a>
+              <a href="#deals" data-footer-label="Training Wheel Bikes">Training Wheel Bikes</a>
+              <a href="#deals" data-footer-label="12 Inch Bikes">12 Inch Bikes</a>
+              <a href="#deals" data-footer-label="14 Inch Bikes">14 Inch Bikes</a>
+              <a href="#deals" data-footer-label="16 Inch Bikes">16 Inch Bikes</a>
+              <a href="#deals" data-footer-label="20 Inch Bikes">20 Inch Bikes</a>
+              <a href="#deals" data-footer-label="Compact Folding Bikes">Compact Folding Bikes</a>
+              <a href="#deals" data-footer-label="Lightweight Folding Bikes">Lightweight Folding Bikes</a>
+              <a href="#deals" data-footer-label="Gear Folding Bikes">Gear Folding Bikes</a>
+              <a href="#deals" data-footer-label="Electric Folding Bikes">Electric Folding Bikes</a>
+              <a href="#deals" data-footer-label="Urban Folding Bikes">Urban Folding Bikes</a>
+              <a href="#deals" data-footer-label="Single Speed Bikes">Single Speed Bikes</a>
+              <a href="#deals" data-footer-label="Multi-Speed Bikes">Multi-Speed Bikes</a>
+              <a href="#deals" data-footer-label="Gear Cycles">Gear Cycles</a>
+              <a href="#deals" data-footer-label="High-Speed Bikes">High-Speed Bikes</a>
+              <a href="#deals" data-footer-label="Racing Bikes">Racing Bikes</a>
+              <a href="#deals" data-footer-label="Helmets">Helmets</a>
+              <a href="#deals" data-footer-label="Lights &amp; Reflectors">Lights &amp; Reflectors</a>
+              <a href="#deals" data-footer-label="Locks">Locks</a>
+              <a href="#deals" data-footer-label="Pumps &amp; Repair Kits">Pumps &amp; Repair Kits</a>
+              <a href="#deals" data-footer-label="Bottle Holders">Bottle Holders</a>
+              <a href="#deals" data-footer-label="Cycle Bags">Cycle Bags</a>
+              <a href="#deals" data-footer-label="Mudguards">Mudguards</a>
+              <a href="#deals" data-footer-label="Bells &amp; Horns">Bells &amp; Horns</a>
+              <a href="#deals" data-footer-label="Phone Holders">Phone Holders</a>
+            </div>
+          </details>
+
+          <details class="footer-seo-group" data-icon="stethoscope" data-footer-filter="all">
+            <summary>Medical Devices</summary>
+            <div class="footer-seo-links">
+              <a href="#deals" data-footer-label="Blood Pressure Monitors">Blood Pressure Monitors</a>
+              <a href="#deals" data-footer-label="Digital Thermometers">Digital Thermometers</a>
+              <a href="#deals" data-footer-label="Infrared Thermometers">Infrared Thermometers</a>
+              <a href="#deals" data-footer-label="Pulse Oximeters">Pulse Oximeters</a>
+              <a href="#deals" data-footer-label="Glucometers">Glucometers</a>
+              <a href="#deals" data-footer-label="Weighing Scales">Weighing Scales</a>
+              <a href="#deals" data-footer-label="Spirometers">Spirometers</a>
+              <a href="#deals" data-footer-label="Peak Flow Meters">Peak Flow Meters</a>
+              <a href="#deals" data-footer-label="Cholesterol Test Kits">Cholesterol Test Kits</a>
+              <a href="#deals" data-footer-label="Hemoglobin Meters">Hemoglobin Meters</a>
+              <a href="#deals" data-footer-label="Pregnancy Test Kits">Pregnancy Test Kits</a>
+              <a href="#deals" data-footer-label="Ovulation Test Kits">Ovulation Test Kits</a>
+              <a href="#deals" data-footer-label="Urine Test Strips">Urine Test Strips</a>
+              <a href="#deals" data-footer-label="Rapid Test Kits">Rapid Test Kits</a>
+              <a href="#deals" data-footer-label="Digital Diagnostic Devices">Digital Diagnostic Devices</a>
+              <a href="#deals" data-footer-label="Nebulizers">Nebulizers</a>
+              <a href="#deals" data-footer-label="Oxygen Concentrators">Oxygen Concentrators</a>
+              <a href="#deals" data-footer-label="CPAP Machines">CPAP Machines</a>
+              <a href="#deals" data-footer-label="BiPAP Machines">BiPAP Machines</a>
+              <a href="#deals" data-footer-label="Oxygen Cylinders">Oxygen Cylinders</a>
+              <a href="#deals" data-footer-label="Inhalers">Inhalers</a>
+              <a href="#deals" data-footer-label="Respiratory Masks">Respiratory Masks</a>
+              <a href="#deals" data-footer-label="Humidifiers">Humidifiers</a>
+              <a href="#deals" data-footer-label="Wheelchairs">Wheelchairs</a>
+              <a href="#deals" data-footer-label="Electric Wheelchairs">Electric Wheelchairs</a>
+              <a href="#deals" data-footer-label="Patient Beds">Patient Beds</a>
+              <a href="#deals" data-footer-label="Folding Patient Beds">Folding Patient Beds</a>
+              <a href="#deals" data-footer-label="Commode Chairs">Commode Chairs</a>
+              <a href="#deals" data-footer-label="Walkers">Walkers</a>
+              <a href="#deals" data-footer-label="Crutches">Crutches</a>
+              <a href="#deals" data-footer-label="Shower Chairs">Shower Chairs</a>
+              <a href="#deals" data-footer-label="Transfer Boards">Transfer Boards</a>
+              <a href="#deals" data-footer-label="Heating Pads">Heating Pads</a>
+              <a href="#deals" data-footer-label="Electric Massagers">Electric Massagers</a>
+              <a href="#deals" data-footer-label="TENS Machines">TENS Machines</a>
+              <a href="#deals" data-footer-label="Orthopedic Supports">Orthopedic Supports</a>
+              <a href="#deals" data-footer-label="Back &amp; Lumbar Supports">Back &amp; Lumbar Supports</a>
+              <a href="#deals" data-footer-label="Knee Supports">Knee Supports</a>
+              <a href="#deals" data-footer-label="Cervical Collars">Cervical Collars</a>
+              <a href="#deals" data-footer-label="Posture Correctors">Posture Correctors</a>
+              <a href="#deals" data-footer-label="Compression Supports">Compression Supports</a>
+              <a href="#deals" data-footer-label="Hot &amp; Cold Packs">Hot &amp; Cold Packs</a>
+              <a href="#deals" data-footer-label="Surgical Gloves">Surgical Gloves</a>
+              <a href="#deals" data-footer-label="Face Masks">Face Masks</a>
+              <a href="#deals" data-footer-label="Syringes">Syringes</a>
+              <a href="#deals" data-footer-label="Bandages">Bandages</a>
+              <a href="#deals" data-footer-label="Gauze">Gauze</a>
+              <a href="#deals" data-footer-label="IV Sets">IV Sets</a>
+              <a href="#deals" data-footer-label="Disposable Aprons">Disposable Aprons</a>
+              <a href="#deals" data-footer-label="Surgical Kits">Surgical Kits</a>
+              <a href="#deals" data-footer-label="Medical Consumables">Medical Consumables</a>
+            </div>
+          </details>
+
+          <details class="footer-seo-group" data-icon="house" data-footer-filter="all">
+            <summary>Building &amp; Construction Materials</summary>
+            <div class="footer-seo-links">
+              <a href="#deals" data-footer-label="OPC Cement">OPC Cement</a>
+              <a href="#deals" data-footer-label="PPC Cement">PPC Cement</a>
+              <a href="#deals" data-footer-label="White Cement">White Cement</a>
+              <a href="#deals" data-footer-label="Ready Mix Concrete (RMC)">Ready Mix Concrete (RMC)</a>
+              <a href="#deals" data-footer-label="Concrete Blocks">Concrete Blocks</a>
+              <a href="#deals" data-footer-label="AAC Blocks">AAC Blocks</a>
+              <a href="#deals" data-footer-label="Hollow Blocks">Hollow Blocks</a>
+              <a href="#deals" data-footer-label="Precast Concrete">Precast Concrete</a>
+              <a href="#deals" data-footer-label="Fly Ash Bricks">Fly Ash Bricks</a>
+              <a href="#deals" data-footer-label="Concrete Additives">Concrete Additives</a>
+              <a href="#deals" data-footer-label="TMT Bars">TMT Bars</a>
+              <a href="#deals" data-footer-label="Steel Rods">Steel Rods</a>
+              <a href="#deals" data-footer-label="Structural Steel">Structural Steel</a>
+              <a href="#deals" data-footer-label="Binding Wire">Binding Wire</a>
+              <a href="#deals" data-footer-label="Steel Mesh">Steel Mesh</a>
+              <a href="#deals" data-footer-label="MS Plates">MS Plates</a>
+              <a href="#deals" data-footer-label="Steel Pipes">Steel Pipes</a>
+              <a href="#deals" data-footer-label="GI Sheets">GI Sheets</a>
+              <a href="#deals" data-footer-label="Roofing Steel Sheets">Roofing Steel Sheets</a>
+              <a href="#deals" data-footer-label="Clay Bricks">Clay Bricks</a>
+              <a href="#deals" data-footer-label="Solid Blocks">Solid Blocks</a>
+              <a href="#deals" data-footer-label="M Sand">M Sand</a>
+              <a href="#deals" data-footer-label="River Sand">River Sand</a>
+              <a href="#deals" data-footer-label="Plastering Sand">Plastering Sand</a>
+              <a href="#deals" data-footer-label="Aggregates (Blue Metal)">Aggregates (Blue Metal)</a>
+              <a href="#deals" data-footer-label="Gravel">Gravel</a>
+              <a href="#deals" data-footer-label="Vitrified Tiles">Vitrified Tiles</a>
+              <a href="#deals" data-footer-label="Ceramic Tiles">Ceramic Tiles</a>
+              <a href="#deals" data-footer-label="Porcelain Tiles">Porcelain Tiles</a>
+              <a href="#deals" data-footer-label="Marble">Marble</a>
+              <a href="#deals" data-footer-label="Granite">Granite</a>
+              <a href="#deals" data-footer-label="Wooden Flooring">Wooden Flooring</a>
+              <a href="#deals" data-footer-label="Vinyl Flooring">Vinyl Flooring</a>
+              <a href="#deals" data-footer-label="Tile Adhesives">Tile Adhesives</a>
+              <a href="#deals" data-footer-label="Grouts">Grouts</a>
+              <a href="#deals" data-footer-label="Floor Polish">Floor Polish</a>
+              <a href="#deals" data-footer-label="PVC Pipes">PVC Pipes</a>
+              <a href="#deals" data-footer-label="CPVC Pipes">CPVC Pipes</a>
+              <a href="#deals" data-footer-label="UPVC Pipes">UPVC Pipes</a>
+              <a href="#deals" data-footer-label="Pipe Fittings">Pipe Fittings</a>
+              <a href="#deals" data-footer-label="Water Tanks">Water Tanks</a>
+              <a href="#deals" data-footer-label="Bathroom Fittings">Bathroom Fittings</a>
+              <a href="#deals" data-footer-label="Taps &amp; Faucets">Taps &amp; Faucets</a>
+              <a href="#deals" data-footer-label="Valves">Valves</a>
+              <a href="#deals" data-footer-label="Drainage Pipes">Drainage Pipes</a>
+              <a href="#deals" data-footer-label="Electrical Wires">Electrical Wires</a>
+              <a href="#deals" data-footer-label="Cables">Cables</a>
+              <a href="#deals" data-footer-label="Switches">Switches</a>
+              <a href="#deals" data-footer-label="Sockets">Sockets</a>
+              <a href="#deals" data-footer-label="MCB &amp; DB Boxes">MCB &amp; DB Boxes</a>
+              <a href="#deals" data-footer-label="LED Lights">LED Lights</a>
+              <a href="#deals" data-footer-label="Panel Boards">Panel Boards</a>
+              <a href="#deals" data-footer-label="Conduits">Conduits</a>
+              <a href="#deals" data-footer-label="Cable Trays">Cable Trays</a>
+              <a href="#deals" data-footer-label="Wooden Doors">Wooden Doors</a>
+              <a href="#deals" data-footer-label="Flush Doors">Flush Doors</a>
+              <a href="#deals" data-footer-label="UPVC Windows">UPVC Windows</a>
+              <a href="#deals" data-footer-label="Aluminium Windows">Aluminium Windows</a>
+              <a href="#deals" data-footer-label="Plywood">Plywood</a>
+              <a href="#deals" data-footer-label="MDF Boards">MDF Boards</a>
+              <a href="#deals" data-footer-label="Laminates">Laminates</a>
+              <a href="#deals" data-footer-label="Veneers">Veneers</a>
+              <a href="#deals" data-footer-label="Door Hardware">Door Hardware</a>
+            </div>
+          </details>
+        </div>
+      </section>
+
+      <!-- Trending products -->
+      <section class="footer-trending" aria-labelledby="footerTrendingTitle">
+        <div class="footer-section-head">
+          <div class="footer-section-title">
+            <span class="footer-section-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+            </span>
+            <h5 id="footerTrendingTitle">Best Selling &amp; Trending</h5>
+          </div>
+          <p class="footer-section-note">Top-selling products across categories, updated constantly.</p>
+        </div>
+        <div class="footer-chip-cloud">
+          <button type="button" class="footer-chip" data-search-term="Google Pixel 10a">Google Pixel 10a</button>
+          <button type="button" class="footer-chip" data-search-term="Infinix Note Edge">Infinix Note Edge</button>
+          <button type="button" class="footer-chip" data-search-term="Motorola Signature">Motorola Signature</button>
+          <button type="button" class="footer-chip" data-search-term="Oppo K14x 5G">Oppo K14x 5G</button>
+          <button type="button" class="footer-chip" data-search-term="Oppo Reno 15 Pro">Oppo Reno 15 Pro</button>
+          <button type="button" class="footer-chip" data-search-term="Vivo V70">Vivo V70</button>
+          <button type="button" class="footer-chip" data-search-term="Chocolate Horlicks">Chocolate Horlicks</button>
+          <button type="button" class="footer-chip" data-search-term="Motorola LED Smart TV">Motorola LED Smart TV</button>
+          <button type="button" class="footer-chip" data-search-term="Whirlpool Washing Machine">Whirlpool Washing Machine</button>
+          <button type="button" class="footer-chip" data-search-term="LG Microwave Oven">LG Microwave Oven</button>
+          <button type="button" class="footer-chip" data-search-term="GoBoult Y1 Pro">GoBoult Y1 Pro</button>
+          <button type="button" class="footer-chip" data-search-term="Fastrack Watch">Fastrack Watch</button>
+          <button type="button" class="footer-chip" data-search-term="Vivo V50 5G">Vivo V50 5G</button>
+          <button type="button" class="footer-chip" data-search-term="Asus Vivobook">Asus Vivobook</button>
+          <button type="button" class="footer-chip" data-search-term="Kent Water Purifier">Kent Water Purifier</button>
+          <button type="button" class="footer-chip" data-search-term="V-Guard AC">V-Guard AC</button>
+          <button type="button" class="footer-chip" data-search-term="Boat Airdopes">Boat Airdopes</button>
+          <button type="button" class="footer-chip" data-search-term="Realme C71">Realme C71</button>
+          <button type="button" class="footer-chip" data-search-term="OnePlus Buds">OnePlus Buds</button>
+          <button type="button" class="footer-chip" data-search-term="iPhone 17">iPhone 17</button>
+          <button type="button" class="footer-chip" data-search-term="iPhone 16 Pro">iPhone 16 Pro</button>
+          <button type="button" class="footer-chip" data-search-term="Nothing Phone 3a">Nothing Phone 3a</button>
+          <button type="button" class="footer-chip" data-search-term="iPhone 16">iPhone 16</button>
+          <button type="button" class="footer-chip" data-search-term="Poco X7 Pro">Poco X7 Pro</button>
+          <button type="button" class="footer-chip" data-search-term="Samsung S24 Ultra">Samsung S24 Ultra</button>
+          <button type="button" class="footer-chip" data-search-term="iPhone 17 Pro">iPhone 17 Pro</button>
+          <button type="button" class="footer-chip" data-search-term="iQOO Neo 10R">iQOO Neo 10R</button>
+          <button type="button" class="footer-chip" data-search-term="Oppo F31 Pro">Oppo F31 Pro</button>
+          <button type="button" class="footer-chip" data-search-term="Samsung S25 Ultra">Samsung S25 Ultra</button>
+          <button type="button" class="footer-chip" data-search-term="OnePlus 15">OnePlus 15</button>
+        </div>
+      </section>
+
       <div class="footer-bottom">
-        <span>© 2026 HappyCart Retail Pvt. Ltd. All rights reserved.</span>
+        <div class="footer-bottom-left">
+          <span class="footer-copyright">© 2026 HappyCart Retail Pvt. Ltd. All rights reserved.</span>
+          <div class="footer-socials" aria-label="Follow HappyCart">
+            <a href="#" class="footer-social" aria-label="Instagram" onclick="showToast('Follow HappyCart on Instagram'); return false;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"></circle></svg>
+            </a>
+            <a href="#" class="footer-social" aria-label="X" onclick="showToast('Follow HappyCart on X'); return false;">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <a href="#" class="footer-social" aria-label="Facebook" onclick="showToast('Follow HappyCart on Facebook'); return false;">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+            <a href="#" class="footer-social" aria-label="YouTube" onclick="showToast('Subscribe to HappyCart on YouTube'); return false;">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            </a>
+          </div>
+        </div>
         <div class="payment-badges">
           <span class="pay-chip">UPI</span>
           <span class="pay-chip">RuPay</span>
@@ -828,7 +1332,9 @@
           <span class="pay-chip">Mastercard</span>
           <span class="pay-chip">GPay</span>
           <span class="pay-chip">Apple Pay</span>
-          <button class="back-to-top-btn" onclick="window.scrollTo({top:0, behavior:'smooth'})">↑ Top</button>
+          <button class="back-to-top-btn" aria-label="Back to top" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
+          </button>
         </div>
       </div>
     </div>
